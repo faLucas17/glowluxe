@@ -1,0 +1,50 @@
+{
+  "expo": {
+    "name": "GlowLuxe By Sofa",
+    "slug": "glowluxe-by-sofa",
+    "scheme": "glowluxe",
+    "version": "2.0.0",
+    "orientation": "default",
+    "userInterfaceStyle": "light",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#F7F2EC"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.glowluxe.sofa",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Votre position permet au livreur de vous trouver et, pour les livreurs, de partager le trajet avec le client."
+      }
+    },
+    "android": {
+      "package": "com.glowluxe.sofa",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#F7F2EC"
+      },
+      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/favicon.png",
+      "name": "GlowLuxe By Sofa",
+      "shortName": "GlowLuxe",
+      "themeColor": "#4A2C21",
+      "backgroundColor": "#F7F2EC"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-web-browser",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Votre position permet au livreur de vous trouver et, pour les livreurs, de partager le trajet avec le client."
+        }
+      ]
+    ]
+  }
+}

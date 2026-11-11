@@ -1,0 +1,4 @@
+{% extends 'emails/_base.html' %}{% load glowluxe %}{% block body %}
+<h1 style="font-size:20px;margin:0 0 12px">Paiement reçu ✅</h1>
+<p>{{ payment.amount|fcfa }} ({{ payment.get_method_display }}) reçus pour la commande <b>{{ order.order_number }}</b>.</p>
+{% include 'emails/_summary.html' %}{% include 'emails/_button.html' with url=order_url label="Voir ma commande" %}{% endblock %}

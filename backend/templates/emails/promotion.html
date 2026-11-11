@@ -1,0 +1,6 @@
+{% extends 'emails/_base.html' %}{% block body %}
+<h1 style="font-size:22px;margin:0 0 12px">{{ promo.title }}</h1>
+<p>Bonjour {{ user.first_name|default:user.username }},</p><p>{{ promo.message|linebreaksbr }}</p>
+{% if promo.code %}<p style="font-size:18px">Code : <b style="background:#F7EBDD;padding:4px 12px;border-radius:8px">{{ promo.code }}</b></p>{% endif %}
+{% include 'emails/_button.html' with url=app_url label="J'en profite" %}{% endblock %}
+{% block footer %}<br>Vous recevez cet email car vous avez accepté nos promotions. <a href="{{ unsubscribe_url }}" style="color:#8A7B70">Se désinscrire</a>{% endblock %}

@@ -1,0 +1,4 @@
+{% extends 'emails/_base.html' %}{% block body %}
+<h1 style="font-size:20px;margin:0 0 12px">Bienvenue chez GlowLuxe ✨</h1>
+<p>Merci {{ user.first_name|default:user.username }} ! Vos confirmations de commande, le suivi de vos livraisons et nos promotions en avant-première arriveront ici.</p>
+{% include 'emails/_button.html' with url=app_url label="Voir la boutique" %}{% endblock %}

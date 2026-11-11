@@ -1,0 +1,7 @@
+{% extends 'emails/_base.html' %}{% load glowluxe %}{% block body %}
+<h1 style="font-size:22px;margin:0 0 12px">Merci {{ order.user.first_name|default:"" }} ! 🎉</h1>
+<p>Votre commande <b>{{ order.order_number }}</b> est confirmée ({% if order.status == 'deposit_paid' %}acompte{% else %}paiement{% endif %} de {{ payment.amount|fcfa }} reçu).</p>
+{% include 'emails/_summary.html' %}
+{% if order.amount_due %}<p>Le reste ({{ order.amount_due|fcfa }}) se règle dans l'appli ou en espèces au livreur.</p>{% endif %}
+<p>Dès qu'un livreur prend votre colis, vous recevez son nom, son numéro et un lien pour le suivre en direct.</p>
+{% include 'emails/_button.html' with url=order_url label="Voir ma commande" %}{% endblock %}

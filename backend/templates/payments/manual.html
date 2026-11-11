@@ -1,0 +1,8 @@
+{% extends '_page.html' %}{% load glowluxe %}{% block body %}<div class="card">
+<h1>Commande {{ order.order_number }}</h1>
+<p>Montant à envoyer maintenant :<br><span class="amount">{{ payment.amount|fcfa }}</span></p>
+<p>1. Envoyez ce montant par <b>{{ payment.get_method_display }}</b> au <b>{{ shop.contact_phone }}</b>.<br>
+2. Envoyez-nous la confirmation sur WhatsApp (message déjà rempli).<br>
+3. Nous validons : vous recevez aussitôt l'email de confirmation.</p>
+<a class="btn wa" href="{{ whatsapp_url }}">Envoyer sur WhatsApp</a>
+<a class="btn ghost" href="{{ back_url }}">Retour à ma commande</a><p class="muted">Référence : {{ payment.reference }}</p></div>{% endblock %}

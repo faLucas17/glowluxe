@@ -1,0 +1,5 @@
+{% extends 'emails/_base.html' %}{% load glowluxe %}{% block body %}
+<h1 style="font-size:20px;margin:0 0 12px">Nouvelle commande {{ order.order_number }}</h1>
+<p>{{ order.user.email }} · {{ order.get_payment_plan_display }} · payé {{ order.amount_paid|fcfa }} ({{ payment.get_method_display }})</p>
+{% include 'emails/_summary.html' %}{% if order.notes %}<p><b>Note :</b> {{ order.notes }}</p>{% endif %}
+<p>Passez-la « Prête » dans l'admin pour lancer la recherche d'un livreur.</p>{% endblock %}

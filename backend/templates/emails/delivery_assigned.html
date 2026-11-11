@@ -1,0 +1,6 @@
+{% extends 'emails/_base.html' %}{% load glowluxe %}{% block body %}
+<h1 style="font-size:20px;margin:0 0 12px">Votre livreur est désigné 🛵</h1>
+<p><b>{{ courier.display_name }}</b> ({{ courier.get_vehicle_display }}) livre votre commande <b>{{ order.order_number }}</b>.</p>
+<p>📞 <a href="tel:{{ courier.phone|cut:' ' }}">{{ courier.phone }}</a></p>
+{% if order.amount_due %}<p>À remettre au livreur : <b>{{ order.amount_due|fcfa }}</b></p>{% endif %}
+{% include 'emails/_button.html' with url=tracking_url label="Suivre mon livreur" %}{% endblock %}

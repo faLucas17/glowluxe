@@ -1,0 +1,15 @@
+{% load static %}<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}GlowLuxe By Sofa{% endblock %}</title>
+<style>
+:root{--brown:#4A2C21;--caramel:#C8956A;--cream:#F7F2EC;--text:#2B1D16;--muted:#8A7B70}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--text);font-family:-apple-system,Segoe UI,Roboto,Montserrat,sans-serif}
+.wrap{max-width:520px;margin:0 auto;padding:32px 20px;text-align:center}
+.brand{font-family:Georgia,serif;font-size:30px;color:var(--caramel);margin:8px 0 0}.by{font-style:italic;color:var(--brown);margin-bottom:24px}
+.card{background:#fff;border-radius:18px;padding:24px;box-shadow:0 6px 24px rgba(74,44,33,.08);text-align:left}
+h1{font-size:22px;margin:0 0 12px}p{line-height:1.6}.muted{color:var(--muted);font-size:14px}
+.btn{display:block;width:100%;text-align:center;background:var(--brown);color:#fff;border:0;border-radius:999px;padding:15px;font-size:15px;font-weight:700;text-decoration:none;margin-top:14px;cursor:pointer}
+.btn.alt{background:var(--caramel)}.btn.wa{background:#25D366}.btn.ghost{background:transparent;color:var(--brown);border:2px solid var(--brown)}
+.amount{font-size:26px;font-weight:800;color:var(--brown)}
+</style>{% block head %}{% endblock %}</head>
+<body><div class="wrap"><div class="brand">GlowLuxe</div><div class="by">By Sofa</div>{% block body %}{% endblock %}</div></body></html>

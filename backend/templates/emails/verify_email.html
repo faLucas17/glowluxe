@@ -1,0 +1,5 @@
+{% extends 'emails/_base.html' %}{% block body %}
+<h1 style="font-size:20px;margin:0 0 12px">Confirmez votre email</h1>
+<p>Bonjour {{ user.first_name|default:user.username }}, confirmez votre adresse pour recevoir vos commandes et nos promotions (lien valable 3 jours).</p>
+{% include 'emails/_button.html' with url=verify_url label="Confirmer mon email" %}
+<p style="font-size:12px;color:#8A7B70">Vous n'avez pas créé de compte ? Ignorez cet email.</p>{% endblock %}

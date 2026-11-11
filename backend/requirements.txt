@@ -1,0 +1,15 @@
+Django~=6.1.1
+djangorestframework~=3.18
+djangorestframework-simplejwt~=5.5
+django-cors-headers~=4.9
+django-filter~=26.2
+Pillow~=13.0
+python-decouple~=3.8
+dj-database-url~=3.1
+gunicorn~=27.0
+whitenoise~=6.12
+psycopg[binary]~=3.3
+cloudinary~=1.47
+django-cloudinary-storage==0.3.0
+django-anymail[brevo]~=15.2
+requests~=2.34

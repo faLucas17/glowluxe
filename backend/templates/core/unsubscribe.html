@@ -1,0 +1,2 @@
+{% extends '_page.html' %}{% block body %}<div class="card">{% if done %}<h1>C'est noté</h1><p>Vous ne recevrez plus nos promotions. Les emails de vos commandes continuent d'arriver.</p>
+{% else %}<h1>Ne plus recevoir les promotions ?</h1><form method="post">{% csrf_token %}<button class="btn">Confirmer</button></form>{% endif %}</div>{% endblock %}

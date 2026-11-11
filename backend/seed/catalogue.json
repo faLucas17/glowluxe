@@ -1,0 +1,492 @@
+{
+  "categories": [
+    {
+      "slug": "accessoires",
+      "name": "Accessoires",
+      "parent": null,
+      "gender": "unisex",
+      "icon": "",
+      "position": 0,
+      "is_active": true,
+      "image": null
+    },
+    {
+      "slug": "chaussures",
+      "name": "Chaussures",
+      "parent": null,
+      "gender": "unisex",
+      "icon": "",
+      "position": 0,
+      "is_active": true,
+      "image": null
+    },
+    {
+      "slug": "sacs-maroquinerie",
+      "name": "Sacs & Maroquinerie",
+      "parent": null,
+      "gender": "women",
+      "icon": "",
+      "position": 0,
+      "is_active": true,
+      "image": null
+    },
+    {
+      "slug": "voiles-hijabs",
+      "name": "Voiles & Hijabs",
+      "parent": null,
+      "gender": "women",
+      "icon": "",
+      "position": 0,
+      "is_active": true,
+      "image": null
+    },
+    {
+      "slug": "vetements-femme",
+      "name": "Vêtements Femme",
+      "parent": null,
+      "gender": "women",
+      "icon": "",
+      "position": 0,
+      "is_active": true,
+      "image": null
+    },
+    {
+      "slug": "vetements-homme",
+      "name": "Vêtements Homme",
+      "parent": null,
+      "gender": "men",
+      "icon": "",
+      "position": 0,
+      "is_active": true,
+      "image": null
+    },
+    {
+      "slug": "crochet-fait-main",
+      "name": "Crochet fait main",
+      "parent": null,
+      "gender": "unisex",
+      "icon": "color-palette",
+      "position": 1,
+      "is_active": true,
+      "image": null
+    },
+    {
+      "slug": "tenues-traditionnelles",
+      "name": "Tenues traditionnelles",
+      "parent": null,
+      "gender": "unisex",
+      "icon": "ribbon",
+      "position": 5,
+      "is_active": true,
+      "image": null
+    },
+    {
+      "slug": "bijoux",
+      "name": "Bijoux",
+      "parent": null,
+      "gender": "women",
+      "icon": "diamond",
+      "position": 6,
+      "is_active": true,
+      "image": null
+    },
+    {
+      "slug": "enfant",
+      "name": "Enfant",
+      "parent": null,
+      "gender": "kids",
+      "icon": "happy",
+      "position": 7,
+      "is_active": true,
+      "image": null
+    },
+    {
+      "slug": "crochet-vetements",
+      "name": "Vêtements en crochet",
+      "parent": "crochet-fait-main",
+      "gender": "women",
+      "icon": "shirt",
+      "position": 1,
+      "is_active": true,
+      "image": null
+    },
+    {
+      "slug": "crochet-sacs",
+      "name": "Sacs en crochet",
+      "parent": "crochet-fait-main",
+      "gender": "women",
+      "icon": "bag-handle",
+      "position": 2,
+      "is_active": true,
+      "image": null
+    },
+    {
+      "slug": "crochet-accessoires",
+      "name": "Bonnets, écharpes & accessoires crochet",
+      "parent": "crochet-fait-main",
+      "gender": "unisex",
+      "icon": "sparkles",
+      "position": 3,
+      "is_active": true,
+      "image": null
+    },
+    {
+      "slug": "crochet-bebe-enfant",
+      "name": "Crochet bébé & enfant",
+      "parent": "crochet-fait-main",
+      "gender": "kids",
+      "icon": "happy",
+      "position": 4,
+      "is_active": true,
+      "image": null
+    }
+  ],
+  "products": [
+    {
+      "slug": "montre-homme-a-quartz-classchic-bracelet-cuir-None",
+      "name": "Montre Homme A Quartz - Class'Chic - Bracelet Cuir",
+      "category": "accessoires",
+      "description": "Une montre qui ne se démodera jamais Professional - Une montre parfaite pour le BUREAU ou les RÉUNIONS Sleek - Quelle que soit la taille de votre main.",
+      "gender": "men",
+      "price": "8000.00",
+      "compare_at_price": "10000.00",
+      "sku": "GL-1008",
+      "stock_quantity": 15,
+      "material": "",
+      "is_handmade": false,
+      "made_to_order": false,
+      "production_days": 0,
+      "is_featured": false,
+      "is_active": true,
+      "images": [
+        {
+          "file": "products/2026/09/montre.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 0
+        },
+        {
+          "file": "products/2026/09/images_1.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 1
+        },
+        {
+          "file": "products/2026/09/images_2.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 2
+        }
+      ],
+      "variants": [
+        {
+          "size": "17",
+          "color": "Noir",
+          "color_hex": "#000",
+          "stock_quantity": 15,
+          "extra_price": "0.00"
+        }
+      ]
+    },
+    {
+      "slug": "boucles-doreilles-creoles-or-dcc0f3d2",
+      "name": "Boucles d'Oreilles Créoles Or",
+      "category": "accessoires",
+      "description": "Boucles d'Oreilles Créoles Or — pièce sélectionnée avec soin par GlowLuxe By Sofa. Matière noble, finition premium, style intemporel.",
+      "gender": "women",
+      "price": "12000.00",
+      "compare_at_price": null,
+      "sku": "GL-1007",
+      "stock_quantity": 25,
+      "material": "",
+      "is_handmade": false,
+      "made_to_order": false,
+      "production_days": 0,
+      "is_featured": false,
+      "is_active": true,
+      "images": [
+        {
+          "file": "products/2026/09/boucle_3.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 0
+        },
+        {
+          "file": "products/2026/09/boucle_2.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 1
+        },
+        {
+          "file": "products/2026/09/boucles_doeilles.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 2
+        }
+      ],
+      "variants": []
+    },
+    {
+      "slug": "voile-soie-beige-934ca5aa",
+      "name": "Voile Soie Beige",
+      "category": "voiles-hijabs",
+      "description": "Voile Soie Beige — pièce sélectionnée avec soin par GlowLuxe By Sofa. Matière noble, finition premium, style intemporel.",
+      "gender": "women",
+      "price": "15000.00",
+      "compare_at_price": null,
+      "sku": "GL-1006",
+      "stock_quantity": 25,
+      "material": "",
+      "is_handmade": false,
+      "made_to_order": false,
+      "production_days": 0,
+      "is_featured": true,
+      "is_active": true,
+      "images": [
+        {
+          "file": "products/2026/09/Voile_Soie_Beige.jpeg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 0
+        },
+        {
+          "file": "products/2026/09/Voile3.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 1
+        },
+        {
+          "file": "products/2026/09/voile2.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 2
+        }
+      ],
+      "variants": [
+        {
+          "size": "",
+          "color": "beige noir",
+          "color_hex": "",
+          "stock_quantity": 0,
+          "extra_price": "0.00"
+        }
+      ]
+    },
+    {
+      "slug": "sac-a-main-matelasse-noir-9e7b4484",
+      "name": "Sac à Main Matelassé Noir",
+      "category": "sacs-maroquinerie",
+      "description": "Sac à Main Matelassé Noir — pièce sélectionnée avec soin par GlowLuxe By Sofa. Matière noble, finition premium, style intemporel.",
+      "gender": "women",
+      "price": "55000.00",
+      "compare_at_price": null,
+      "sku": "GL-1005",
+      "stock_quantity": 25,
+      "material": "",
+      "is_handmade": false,
+      "made_to_order": false,
+      "production_days": 0,
+      "is_featured": false,
+      "is_active": true,
+      "images": [
+        {
+          "file": "products/2026/09/Sac.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 0
+        },
+        {
+          "file": "products/2026/09/sac2.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 1
+        }
+      ],
+      "variants": []
+    },
+    {
+      "slug": "lunettes-de-soleil-dorees-14935156",
+      "name": "Lunettes de Soleil Dorées",
+      "category": "accessoires",
+      "description": "Lunettes de Soleil Dorées — pièce sélectionnée avec soin par GlowLuxe By Sofa. Matière noble, finition premium, style intemporel.",
+      "gender": "unisex",
+      "price": "20000.00",
+      "compare_at_price": "25000.00",
+      "sku": "GL-1004",
+      "stock_quantity": 25,
+      "material": "",
+      "is_handmade": false,
+      "made_to_order": false,
+      "production_days": 0,
+      "is_featured": true,
+      "is_active": true,
+      "images": [
+        {
+          "file": "products/2026/09/lunette_3.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 0
+        },
+        {
+          "file": "products/2026/09/lunettes_2.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 1
+        },
+        {
+          "file": "products/2026/09/Lunettes.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 2
+        }
+      ],
+      "variants": []
+    },
+    {
+      "slug": "sneakers-blanches-premium-06859adf",
+      "name": "Sneakers Blanches Premium",
+      "category": "chaussures",
+      "description": "Sneakers Blanches Premium — pièce sélectionnée avec soin par GlowLuxe By Sofa. Matière noble, finition premium, style intemporel.",
+      "gender": "unisex",
+      "price": "35000.00",
+      "compare_at_price": null,
+      "sku": "GL-1003",
+      "stock_quantity": 25,
+      "material": "",
+      "is_handmade": false,
+      "made_to_order": false,
+      "production_days": 0,
+      "is_featured": false,
+      "is_active": true,
+      "images": [
+        {
+          "file": "products/2026/09/Sneakers.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 0
+        },
+        {
+          "file": "products/2026/09/sneaker2.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 1
+        },
+        {
+          "file": "products/2026/09/sneaker3.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 2
+        }
+      ],
+      "variants": []
+    },
+    {
+      "slug": "costume-noir-classique-e100ff5d",
+      "name": "Costume Noir Classique",
+      "category": "vetements-homme",
+      "description": "Costume Noir Classique — pièce sélectionnée avec soin par GlowLuxe By Sofa. Matière noble, finition premium, style intemporel.",
+      "gender": "men",
+      "price": "75000.00",
+      "compare_at_price": "90000.00",
+      "sku": "GL-1002",
+      "stock_quantity": 25,
+      "material": "",
+      "is_handmade": false,
+      "made_to_order": false,
+      "production_days": 0,
+      "is_featured": true,
+      "is_active": true,
+      "images": [
+        {
+          "file": "products/2026/09/Costume.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 0
+        },
+        {
+          "file": "products/2026/09/costume2.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 1
+        },
+        {
+          "file": "products/2026/09/costume3.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 2
+        }
+      ],
+      "variants": []
+    },
+    {
+      "slug": "ensemble-tailleur-blanc-db23a96d",
+      "name": "Ensemble Tailleur Blanc",
+      "category": "vetements-femme",
+      "description": "Ensemble Tailleur Blanc — pièce sélectionnée avec soin par GlowLuxe By Sofa. Matière noble, finition premium, style intemporel.",
+      "gender": "women",
+      "price": "60000.00",
+      "compare_at_price": null,
+      "sku": "GL-1001",
+      "stock_quantity": 25,
+      "material": "",
+      "is_handmade": false,
+      "made_to_order": false,
+      "production_days": 0,
+      "is_featured": false,
+      "is_active": true,
+      "images": [
+        {
+          "file": "products/2026/09/Ensemble.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 0
+        },
+        {
+          "file": "products/2026/09/ensemble_2.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 1
+        }
+      ],
+      "variants": []
+    },
+    {
+      "slug": "blazer-beige-elegant-3d038f3f",
+      "name": "Blazer Beige Élégant",
+      "category": "vetements-femme",
+      "description": "Blazer Beige Élégant — pièce sélectionnée avec soin par GlowLuxe By Sofa. Matière noble, finition premium, style intemporel.",
+      "gender": "women",
+      "price": "45000.00",
+      "compare_at_price": "55000.00",
+      "sku": "GL-1000",
+      "stock_quantity": 25,
+      "material": "",
+      "is_handmade": false,
+      "made_to_order": false,
+      "production_days": 0,
+      "is_featured": true,
+      "is_active": true,
+      "images": [
+        {
+          "file": "products/2026/09/Blazerbeige.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 0
+        },
+        {
+          "file": "products/2026/09/blaze2.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 1
+        },
+        {
+          "file": "products/2026/09/blaze_3.jpg",
+          "alt_text": "",
+          "is_primary": false,
+          "position": 2
+        }
+      ],
+      "variants": []
+    }
+  ]
+}

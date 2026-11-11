@@ -1,0 +1,9 @@
+{% load glowluxe %}
+<table role="presentation" width="100%" cellpadding="6" cellspacing="0" style="border-collapse:collapse;font-size:14px;margin:12px 0">
+{% for item in order.items.all %}<tr style="border-bottom:1px solid #F0E6DC"><td>{{ item.product_name }}<br><span style="color:#8A7B70;font-size:12px">{% if item.variant_label %}{{ item.variant_label }} · {% endif %}x{{ item.quantity }}</span></td><td align="right" style="white-space:nowrap">{{ item.subtotal|fcfa }}</td></tr>{% endfor %}
+<tr><td>Livraison{% if order.delivery_zone %} ({{ order.delivery_zone.name }}){% endif %}{% if order.delivery_fee_on_arrival %} - au livreur{% endif %}</td><td align="right">{{ order.shipping_cost|fcfa }}</td></tr>
+<tr><td><b>Total</b></td><td align="right"><b>{{ order.total|fcfa }}</b></td></tr>
+<tr><td style="color:#2E7D32">Déjà payé</td><td align="right" style="color:#2E7D32">{{ order.amount_paid|fcfa }}</td></tr>
+{% if order.amount_due %}<tr><td style="color:#B23B2E"><b>Reste à payer</b></td><td align="right" style="color:#B23B2E"><b>{{ order.amount_due|fcfa }}</b></td></tr>{% endif %}
+</table>
+<p style="font-size:13px;color:#5C4A3F"><b>Livraison :</b> {{ order.address_snapshot.full_name }} - {{ order.address_snapshot.phone }}<br>{{ order.address_snapshot.line }}</p>

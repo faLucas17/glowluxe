@@ -1,0 +1,3 @@
+{% extends '_page.html' %}{% block body %}<div class="card"><h1>Paiement non abouti</h1>
+<p>Rien n'a été débité pour la commande <b>{{ order.order_number }}</b>. Elle est conservée : réessayez depuis « Commandes » dans l'appli.</p>
+<a class="btn ghost" href="{{ back_url }}">Retour à ma commande</a><p class="muted">Sur téléphone, fermez cette page pour revenir dans l'appli.</p></div>{% endblock %}

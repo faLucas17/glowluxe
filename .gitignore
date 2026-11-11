@@ -1,0 +1,19 @@
+# Secrets
+.env
+.env.*
+!.env.example
+# Python / Django
+__pycache__/
+*.pyc
+venv/
+.venv/
+backend/db.sqlite3
+backend/media/
+backend/staticfiles/
+# Expo / Node
+node_modules/
+mobile/.expo/
+mobile/dist/
+mobile/web-build/
+*.log
+.DS_Store

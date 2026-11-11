@@ -1,0 +1,9 @@
+{% extends '_page.html' %}{% load glowluxe %}
+{% block head %}{% if payment.status == 'pending' %}<meta http-equiv="refresh" content="4">{% endif %}{% endblock %}
+{% block body %}<div class="card">
+{% if payment.status == 'success' %}<h1>Merci, c'est confirmé ! 🎉</h1>
+<p>Paiement de <span class="amount">{{ payment.amount|fcfa }}</span> reçu pour la commande <b>{{ order.order_number }}</b>.</p>
+{% if order.amount_due %}<p class="muted">Reste à régler : {{ order.amount_due|fcfa }} (en ligne ou au livreur).</p>{% endif %}
+<p class="muted">Un email de confirmation vous a été envoyé.</p>
+{% else %}<h1>Confirmation en cours…</h1><p>Nous attendons la confirmation du paiement. Cette page se met à jour toute seule.</p>{% endif %}
+<a class="btn ghost" href="{{ back_url }}">Retour à ma commande</a><p class="muted">Sur téléphone, fermez simplement cette page pour revenir dans l'appli.</p></div>{% endblock %}

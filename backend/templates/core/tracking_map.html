@@ -1,0 +1,31 @@
+{% load static %}<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Suivi {{ order.order_number }}</title>
+<link rel="stylesheet" href="{% static 'vendor/leaflet/leaflet.css' %}">
+<style>html,body{height:100%;margin:0}#map{position:fixed;inset:0}.chip{position:fixed;left:12px;right:12px;bottom:14px;z-index:1000;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:0 6px 20px rgba(0,0,0,.18);font-family:-apple-system,Roboto,sans-serif;color:#2B1D16;font-size:14px}.chip b{color:#4A2C21}</style>
+</head><body><div id="map"></div><div class="chip" id="chip">Chargement…</div>
+<script src="{% static 'vendor/leaflet/leaflet.js' %}"></script>
+<script>
+(function(){
+  var map=L.map('map',{zoomControl:false}).setView([{{ shop.pickup_latitude|stringformat:"f" }},{{ shop.pickup_longitude|stringformat:"f" }}],13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
+  function ic(e){return L.divIcon({html:'<div style="font-size:28px">'+e+'</div>',className:'',iconSize:[30,30],iconAnchor:[15,15]})}
+  var shopM,destM,cM,fitted=false,chip=document.getElementById('chip');
+  function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function tick(){fetch('{% url "tracking-map-data" token %}',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){
+    if(!shopM)shopM=L.marker([d.shop.lat,d.shop.lng],{icon:ic('🏬')}).addTo(map);
+    if(d.destination&&!destM)destM=L.marker([d.destination.lat,d.destination.lng],{icon:ic('🏠')}).addTo(map);
+    var t='<b>'+esc(d.status_display)+'</b>';
+    var c=d.courier;
+    if(c&&c.lat!=null){
+      if(!cM)cM=L.marker([c.lat,c.lng],{icon:ic('🛵')}).addTo(map);else cM.setLatLng([c.lat,c.lng]);
+      t+='<br>'+esc(c.name)+(c.eta_min?' · arrivée ~'+c.eta_min+' min ('+c.distance_km+' km)':'');
+      if(!fitted){map.fitBounds([[c.lat,c.lng],(destM||shopM).getLatLng()],{padding:[50,50],maxZoom:16});fitted=true;}
+    }
+    chip.innerHTML=t;
+    if(d.status!=='delivered')setTimeout(tick,document.hidden?20000:5000);
+  }).catch(function(){setTimeout(tick,10000)})}
+  tick();
+})();
+</script>
+</body></html>

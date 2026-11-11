@@ -1,0 +1,9 @@
+{% extends 'emails/_base.html' %}{% load glowluxe %}{% block body %}
+<h1 style="font-size:20px;margin:0 0 12px">{{ order.order_number }} : {{ order.get_status_display }}</h1>
+{% if order.status == 'processing' %}<p>Votre commande est en préparation.</p>
+{% elif order.status == 'ready' %}<p>Votre colis est prêt, nous lui attribuons un livreur.</p>
+{% elif order.status == 'out_for_delivery' or order.status == 'shipped' %}<p>Votre colis est en route. Suivez votre livreur en direct dans l'appli.</p>
+{% elif order.status == 'delivered' %}<p>Votre commande a été livrée. Merci pour votre confiance ✨</p>
+{% elif order.status == 'cancelled' %}<p>Votre commande a été annulée. Une question ? Répondez à cet email ou appelez-nous.</p>{% endif %}
+{% if order.amount_due and order.status != 'cancelled' %}<p><b>Reste à payer : {{ order.amount_due|fcfa }}</b></p>{% endif %}
+{% include 'emails/_button.html' with url=order_url label="Suivre ma commande" %}{% endblock %}

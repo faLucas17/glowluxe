@@ -1,0 +1,4 @@
+{% extends 'emails/_base.html' %}{% load glowluxe %}{% block body %}
+<h1 style="font-size:20px;margin:0 0 12px">Nouvelle course disponible</h1>
+<p>Commande {{ delivery.order.order_number }} - zone {{ delivery.order.delivery_zone.name|default:"-" }}.{% if delivery.cash_to_collect %}<br>À encaisser : <b>{{ delivery.cash_to_collect|fcfa }}</b>{% endif %}</p>
+<p>Ouvrez l'appli GlowLuxe (Profil › Espace livreur) : vous avez <b>{{ minutes }} minutes</b> pour accepter.</p>{% endblock %}

@@ -1,0 +1,12 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GlowLuxe</title></head>
+<body style="margin:0;padding:0;background:#F7F2EC;font-family:Arial,Helvetica,sans-serif;color:#2B1D16">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F7F2EC;padding:24px 0"><tr><td align="center">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden">
+<tr><td style="background:#4A2C21;padding:22px;text-align:center">
+<div style="font-family:Georgia,serif;font-size:28px;color:#C8956A">GlowLuxe</div>
+<div style="font-family:Georgia,serif;font-style:italic;color:#F7F2EC;font-size:14px">By Sofa</div>
+<div style="color:#E8D9C9;font-size:10px;letter-spacing:3px;margin-top:6px">LA MODE QUI RÉVÈLE VOTRE ÉCLAT</div></td></tr>
+<tr><td style="padding:28px 28px 8px;font-size:15px;line-height:1.6">{% block body %}{% endblock %}</td></tr>
+<tr><td style="padding:18px 28px 26px;font-size:12px;color:#8A7B70;line-height:1.5;border-top:1px solid #F0E6DC">
+{{ shop.shop_name }} - {{ shop.address }}<br>{{ shop.contact_phone }} · {{ shop.contact_email }}{% block footer %}{% endblock %}</td></tr>
+</table></td></tr></table></body></html>

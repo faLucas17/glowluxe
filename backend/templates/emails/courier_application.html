@@ -1,0 +1,4 @@
+{% extends 'emails/_base.html' %}{% block body %}
+<h1 style="font-size:20px;margin:0 0 12px">Candidature livreur</h1>
+<p><b>{{ profile.display_name }}</b> ({{ profile.user.email }})<br>Tél : {{ profile.phone }}<br>Transport : {{ profile.get_vehicle_display }}<br>Zones : {{ profile.zones }}</p>
+<p>{{ profile.motivation|linebreaksbr }}</p><p>Vérifiez son identité puis validez-le dans l'admin (Livreurs › action « Valider »).</p>{% endblock %}

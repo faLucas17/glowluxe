@@ -1,0 +1,3 @@
+{% extends '_page.html' %}{% load glowluxe %}{% block body %}<div class="card" style="border:2px dashed #C8956A">
+<h1>Simulateur de paiement (local)</h1><p>{{ payment.get_purpose_display }} : <span class="amount">{{ payment.amount|fcfa }}</span><br>Commande {{ payment.order.order_number }} · {{ payment.get_method_display }}</p>
+<form method="post">{% csrf_token %}<button class="btn" name="result" value="ok">✅ Paiement réussi</button><button class="btn ghost" name="result" value="ko">❌ Échec</button></form></div>{% endblock %}
