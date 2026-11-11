@@ -4,6 +4,6 @@ venv/
 .venv/
 .env
 db.sqlite3
-media/
+/media/
 staticfiles/
 *.log
