@@ -35,7 +35,7 @@ export default function LoginScreen({ navigation }) {
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : undefined}>
       <Screen contentStyle={{ padding: 24 }} background={colors.cream}>
         <View style={styles.box}>
-          <View style={{ alignItems: "center", marginBottom: 24 }}><Logo size={36} /></View>
+          <View style={{ alignItems: "center", marginBottom: 24 }}><Logo size={26} variant="full" /></View>
           <Text style={styles.title}>Bon retour !</Text>
           <Text style={styles.sub}>Connectez-vous à votre compte</Text>
           <Field label="Email" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" autoComplete="email"

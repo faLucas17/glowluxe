@@ -1,17 +1,23 @@
 /**
- * Charte GlowLuxe By Sofa (comme dans la vidéo) : fond clair, crème, marron chocolat, caramel.
+ * Charte GlowLuxe By SoFa (affiches de la marque) : noir profond, or, ivoire.
+ * Les anciens noms (brown, caramel...) sont gardés pour ne rien casser dans les écrans :
+ * "brown" = noir de la marque, "caramel" = or.
  */
 export const colors = {
   background: "#FFFFFF",
-  cream: "#F7F2EC",
-  creamDark: "#EFE6DC",
-  brown: "#4A2C21",
-  brownSoft: "#6B4436",
-  caramel: "#C8956A",
-  caramelLight: "#E9D3BE",
-  text: "#2B1D16",
-  textSecondary: "#8A7B70",
-  border: "#EDE3D9",
+  cream: "#F6F1E8",        // ivoire des affiches
+  creamDark: "#EBE2D2",
+  brown: "#111111",        // noir GlowLuxe
+  brownSoft: "#3D3833",
+  caramel: "#B8914A",      // or (texte, prix, accents)
+  caramelLight: "#E4D2A8", // or pâle
+  gold: "#D4AF63",         // or lumineux sur fond noir
+  black: "#0B0B0B",
+  onDark: "#F6F1E8",
+  onDarkMuted: "#A79F93",
+  text: "#151311",
+  textSecondary: "#7A7166",
+  border: "#ECE4D6",
   danger: "#B23B2E",
   dangerBg: "#FBEDEB",
   success: "#2E7D32",
@@ -21,9 +27,9 @@ export const colors = {
 
 export const fonts = {
   script: "BerkshireSwash_400Regular",
-  serif: "Merriweather_400Regular",
-  serifBold: "Merriweather_700Bold",
-  serifLight: "Merriweather_300Light",
+  serif: "PlayfairDisplay_400Regular",      // grand serif élégant des affiches
+  serifBold: "PlayfairDisplay_600SemiBold",
+  serifLight: "PlayfairDisplay_400Regular_Italic",
   sans: "Montserrat_400Regular",
   sansMedium: "Montserrat_500Medium",
   sansSemiBold: "Montserrat_600SemiBold",
@@ -35,7 +41,7 @@ export const spacing = (n) => n * 8;
 export const radius = { sm: 8, md: 12, lg: 18, pill: 999 };
 
 export const shadow = {
-  shadowColor: "#4A2C21",
+  shadowColor: "#000000",
   shadowOpacity: 0.08,
   shadowRadius: 12,
   shadowOffset: { width: 0, height: 4 },

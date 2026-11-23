@@ -4,7 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { BerkshireSwash_400Regular } from "@expo-google-fonts/berkshire-swash";
-import { Merriweather_300Light, Merriweather_400Regular, Merriweather_700Bold } from "@expo-google-fonts/merriweather";
+import { PlayfairDisplay_400Regular, PlayfairDisplay_400Regular_Italic, PlayfairDisplay_600SemiBold } from "@expo-google-fonts/playfair-display";
 import {
   Montserrat_400Regular,
   Montserrat_500Medium,
@@ -25,13 +25,13 @@ function Root() {
   const { loading } = useAuth();
   const [fontsLoaded, fontError] = useFonts({
     Montserrat_400Regular, Montserrat_500Medium, Montserrat_600SemiBold, Montserrat_700Bold,
-    Merriweather_300Light, Merriweather_400Regular, Merriweather_700Bold, BerkshireSwash_400Regular,
+    PlayfairDisplay_400Regular, PlayfairDisplay_400Regular_Italic, PlayfairDisplay_600SemiBold, BerkshireSwash_400Regular,
   });
   const ready = (fontsLoaded || fontError) && !loading;
   useEffect(() => {
     if (ready) SplashScreen.hideAsync().catch(() => {});
   }, [ready]);
-  if (!ready) return <View style={{ flex: 1, backgroundColor: colors.cream }} />;
+  if (!ready) return <View style={{ flex: 1, backgroundColor: colors.black }} />;
   return <AppNavigator />;
 }
 
@@ -41,7 +41,7 @@ export default function App() {
       <AuthProvider>
         <FavoritesProvider>
           <CartProvider>
-            <StatusBar style="dark" />
+            <StatusBar style="light" />
             <Root />
           </CartProvider>
         </FavoritesProvider>

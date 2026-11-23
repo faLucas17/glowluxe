@@ -45,7 +45,7 @@ export default function RegisterScreen({ navigation }) {
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : undefined}>
       <Screen contentStyle={{ padding: 24 }} background={colors.cream}>
         <View style={styles.box}>
-          <View style={{ alignItems: "center", marginBottom: 18 }}><Logo size={32} /></View>
+          <View style={{ alignItems: "center", marginBottom: 18 }}><Logo size={22} variant="full" /></View>
           <Text style={styles.title}>Créer un compte</Text>
           <Text style={styles.sub}>Rejoignez GlowLuxe</Text>
           <View style={{ flexDirection: "row", gap: 10 }}>

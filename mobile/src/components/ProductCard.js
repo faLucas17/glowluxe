@@ -47,15 +47,15 @@ export default memo(ProductCard);
 
 const styles = StyleSheet.create({
   imageBox: { borderRadius: radius.sm, overflow: "hidden", backgroundColor: colors.cream },
-  badge: { position: "absolute", top: 8, left: 8, backgroundColor: colors.caramel, borderRadius: radius.pill, paddingHorizontal: 8, paddingVertical: 2 },
-  handmade: { top: undefined, bottom: 8, backgroundColor: "rgba(74,44,33,0.85)" },
-  badgeText: { color: colors.white, fontSize: 10, fontFamily: fonts.sansBold },
+  badge: { position: "absolute", top: 8, left: 8, backgroundColor: colors.black, borderRadius: radius.pill, paddingHorizontal: 8, paddingVertical: 2 },
+  handmade: { top: undefined, bottom: 8, backgroundColor: "rgba(11,11,11,0.82)" },
+  badgeText: { color: colors.gold, fontSize: 10, fontFamily: fonts.sansBold },
   heart: {
     position: "absolute", top: 8, right: 8, width: 30, height: 30, borderRadius: 15,
     backgroundColor: "rgba(255,255,255,0.92)", alignItems: "center", justifyContent: "center",
   },
   cat: { marginTop: 8, fontSize: 9.5, letterSpacing: 0.8, color: colors.textSecondary, fontFamily: fonts.sansMedium },
-  name: { fontSize: 13, color: colors.text, fontFamily: fonts.sansMedium, marginTop: 2, lineHeight: 17 },
+  name: { fontSize: 13.5, color: colors.text, fontFamily: fonts.serif, marginTop: 2, lineHeight: 17 },
   priceRow: { flexDirection: "row", alignItems: "center", gap: 6, marginTop: 4 },
   price: { fontSize: 13, color: colors.caramel, fontFamily: fonts.sansBold },
   old: { fontSize: 11, color: colors.textSecondary, textDecorationLine: "line-through", fontFamily: fonts.sans },

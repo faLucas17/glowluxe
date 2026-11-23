@@ -31,7 +31,7 @@ export default function ProfileScreen({ navigation }) {
   if (!user) {
     return (
       <Screen contentStyle={{ padding: 24, alignItems: "center" }}>
-        <View style={{ marginVertical: 30 }}><Logo size={36} /></View>
+        <View style={{ marginVertical: 30 }}><Logo size={28} variant="full" /></View>
         <Text style={styles.title}>Bienvenue chez GlowLuxe</Text>
         <Text style={styles.sub}>Connectez-vous pour commander, suivre vos livraisons et recevoir nos promotions en avant-première.</Text>
         <Button title="Se connecter" onPress={() => navigation.navigate("Login")} style={{ alignSelf: "stretch", marginTop: 24, maxWidth: 420 }} />
@@ -56,7 +56,7 @@ export default function ProfileScreen({ navigation }) {
     <Screen contentStyle={{ padding: 16 }}>
       <View style={{ maxWidth: 640, width: "100%", alignSelf: "center" }}>
         <View style={{ alignItems: "center", marginVertical: 20 }}>
-          <View style={styles.avatar}><Ionicons name="person" size={36} color={colors.white} /></View>
+          <View style={styles.avatar}><Ionicons name="person" size={36} color={colors.gold} /></View>
           <Text style={styles.title}>{user.first_name || user.username}</Text>
           <Text style={styles.sub}>{user.email}</Text>
         </View>
@@ -88,7 +88,7 @@ export default function ProfileScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  avatar: { width: 76, height: 76, borderRadius: 38, backgroundColor: colors.caramel, alignItems: "center", justifyContent: "center", marginBottom: 10 },
+  avatar: { width: 76, height: 76, borderRadius: 38, backgroundColor: colors.black, alignItems: "center", justifyContent: "center", marginBottom: 10 },
   title: { fontFamily: fonts.serifBold, fontSize: 18, color: colors.text, textAlign: "center" },
   sub: { fontFamily: fonts.sans, fontSize: 13, color: colors.textSecondary, textAlign: "center", marginTop: 4, lineHeight: 19 },
   warn: { backgroundColor: "#FFF4E5", borderRadius: radius.md, padding: 14, marginBottom: 14 },

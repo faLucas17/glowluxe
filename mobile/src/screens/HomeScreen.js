@@ -8,6 +8,7 @@ import { peekCache } from "../api/client";
 import AppHeader from "../components/AppHeader";
 import Chip from "../components/Chip";
 import Empty from "../components/Empty";
+import HeroBanner from "../components/HeroBanner";
 import ProductGrid from "../components/ProductGrid";
 import SectionTitle from "../components/SectionTitle";
 import GridSkeleton from "../components/Skeleton";
@@ -120,6 +121,8 @@ export default function HomeScreen({ navigation, route }) {
         </View>
       )}
 
+      {!searching && !category ? <HeroBanner /> : null}
+
       {promos.slice(0, 1).map((p) => (
         <Pressable key={p.id} style={styles.promo} onPress={() => p.category_slug && setCategory(p.category_slug)}>
           {p.image ? <Image source={{ uri: p.image }} style={styles.promoImg} contentFit="cover" /> : null}
@@ -176,11 +179,11 @@ const styles = StyleSheet.create({
   },
   searchInput: { flex: 1, height: 46, fontFamily: fonts.sans, fontSize: 14, color: colors.text, outlineStyle: "none" },
   promo: {
-    flexDirection: "row", gap: 12, alignItems: "center", backgroundColor: colors.brown, borderRadius: radius.md,
-    padding: 14, marginTop: 12,
+    flexDirection: "row", gap: 12, alignItems: "center", backgroundColor: colors.black, borderRadius: radius.md,
+    padding: 14, marginTop: 12, borderWidth: 1, borderColor: colors.caramel,
   },
   promoImg: { width: 56, height: 56, borderRadius: 8 },
-  promoTitle: { color: colors.caramelLight, fontFamily: fonts.sansBold, fontSize: 14 },
+  promoTitle: { color: colors.gold, fontFamily: fonts.sansBold, fontSize: 14 },
   promoText: { color: colors.cream, fontFamily: fonts.sans, fontSize: 12, marginTop: 2 },
   promoCode: { color: colors.white, fontFamily: fonts.sansBold, fontSize: 12, marginTop: 4 },
 });

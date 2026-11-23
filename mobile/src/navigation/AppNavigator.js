@@ -36,13 +36,13 @@ const Stack = createNativeStackNavigator();
 
 const theme = {
   ...DefaultTheme,
-  colors: { ...DefaultTheme.colors, background: colors.background, card: colors.white, text: colors.text, border: colors.border, primary: colors.caramel },
+  colors: { ...DefaultTheme.colors, background: colors.background, card: colors.black, text: colors.onDark, border: colors.black, primary: colors.gold },
 };
 
 const stackOptions = {
-  headerTintColor: colors.brown,
-  headerTitleStyle: { fontFamily: fonts.sansSemiBold, color: colors.text, fontSize: 16 },
-  headerStyle: { backgroundColor: colors.white },
+  headerTintColor: colors.gold,
+  headerTitleStyle: { fontFamily: fonts.serif, color: colors.onDark, fontSize: 18 },
+  headerStyle: { backgroundColor: colors.black },
   headerShadowVisible: false,
   headerBackButtonDisplayMode: "minimal",
   contentStyle: { backgroundColor: colors.background },
@@ -126,11 +126,11 @@ function MainTabs() {
       screenOptions={({ route }) => ({
         headerShown: false,
         lazy: true,
-        tabBarActiveTintColor: colors.caramel,
-        tabBarInactiveTintColor: colors.brown,
-        tabBarLabelStyle: { fontFamily: fonts.sansMedium, fontSize: 10 },
-        tabBarStyle: { backgroundColor: colors.white, borderTopColor: colors.border },
-        tabBarBadgeStyle: { backgroundColor: colors.caramel, fontSize: 10 },
+        tabBarActiveTintColor: colors.gold,
+        tabBarInactiveTintColor: colors.onDarkMuted,
+        tabBarLabelStyle: { fontFamily: fonts.sansMedium, fontSize: 10, letterSpacing: 0.3 },
+        tabBarStyle: { backgroundColor: colors.black, borderTopColor: "#2A2620" },
+        tabBarBadgeStyle: { backgroundColor: colors.gold, color: colors.black, fontSize: 10 },
         tabBarIcon: ({ color, size, focused }) => (
           <Ionicons name={focused ? ICONS[route.name] : `${ICONS[route.name]}-outline`} size={size - 2} color={color} />
         ),

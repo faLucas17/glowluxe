@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image } from "expo-image";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { fetchCategories, fetchProducts } from "../api";
@@ -7,8 +8,9 @@ import Button from "../components/Button";
 import Logo from "../components/Logo";
 import { colors, fonts } from "../theme";
 
-const TAGS = ["PRÊT-À-PORTER", "ACCESSOIRES", "CROCHET", "QUALITÉ", "STYLE", "FÉMININ", "TENDANCE", "PREMIUM", "INTEMPOREL"];
+const PILLARS = ["ÉLÉGANCE", "QUALITÉ", "CONFIANCE", "VOUS"];
 
+/** Écran d'accueil inspiré des affiches : fond noir, logo or, « Plus qu'une marque, un style de vie ». */
 export default function WelcomeScreen({ navigation }) {
   const insets = useSafeAreaInsets();
   useEffect(() => {
@@ -17,29 +19,42 @@ export default function WelcomeScreen({ navigation }) {
     fetchCategories().catch(() => {});
   }, []);
   return (
-    <ScrollView style={{ backgroundColor: colors.cream }} contentContainerStyle={[styles.wrap, { paddingTop: insets.top + 50, paddingBottom: insets.bottom + 30 }]}>
-      <View style={{ alignItems: "center" }}>
-        {["ELEGANCE", "STYLE", "CONFIANCE"].map((w) => <Text key={w} style={styles.big}>{w}</Text>)}
-      </View>
-      <View style={{ alignItems: "center", marginVertical: 34 }}>
-        <Logo size={40} />
-      </View>
-      <Text style={styles.tagline}>LA MODE QUI RÉVÈLE{"\n"}VOTRE ÉCLAT</Text>
-      <View style={styles.tags}>
-        {TAGS.map((t) => <View key={t} style={styles.tag}><Text style={styles.tagText}>{t}</Text></View>)}
-      </View>
-      <Button title="VOIR LA BOUTIQUE" variant="dark" onPress={() => navigation.replace("MainTabs")} style={{ width: "100%", maxWidth: 340, alignSelf: "center" }} />
-      <Text style={styles.footer}>G L O W L U X E   B Y   S O F A</Text>
-    </ScrollView>
+    <View style={styles.root}>
+      <Image source={require("../../assets/brand/hero.jpg")} style={styles.bg} contentFit="cover" />
+      <View style={styles.veil} />
+      <ScrollView contentContainerStyle={[styles.wrap, { paddingTop: insets.top + 36, paddingBottom: insets.bottom + 28 }]}>
+        <Text style={styles.kicker}>MODE  /  ACCESSOIRES  /  LIFESTYLE</Text>
+        <View style={styles.rule} />
+        <View style={{ alignItems: "center", marginVertical: 28 }}>
+          <Logo size={34} light variant="full" />
+        </View>
+        <Text style={styles.small}>PLUS QU'UNE MARQUE,</Text>
+        <Text style={styles.big}>UN STYLE DE VIE</Text>
+        <Text style={styles.quote}>L'élégance n'est pas un luxe,{"\n"}c'est une attitude.</Text>
+        <View style={styles.pillars}>
+          {PILLARS.map((p, i) => (
+            <Text key={p} style={styles.pillar}>{i ? "  |  " : ""}{p}</Text>
+          ))}
+        </View>
+        <Button title="DÉCOUVRIR LA BOUTIQUE" variant="gold" onPress={() => navigation.replace("MainTabs")} style={styles.cta} />
+        <Text style={styles.footer}>G L O W L U X E   B Y   S O F A</Text>
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  wrap: { flexGrow: 1, paddingHorizontal: 28, justifyContent: "center", maxWidth: 560, width: "100%", alignSelf: "center" },
-  big: { fontFamily: fonts.serif, fontSize: 24, letterSpacing: 9, color: colors.brown, lineHeight: 38 },
-  tagline: { textAlign: "center", fontFamily: fonts.sans, fontSize: 13, letterSpacing: 4, color: colors.brownSoft, lineHeight: 20 },
-  tags: { flexDirection: "row", flexWrap: "wrap", justifyContent: "center", gap: 8, marginVertical: 28 },
-  tag: { borderWidth: 1, borderColor: colors.caramelLight, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 5 },
-  tagText: { fontFamily: fonts.sansMedium, fontSize: 10, letterSpacing: 1.5, color: colors.brownSoft },
-  footer: { textAlign: "center", fontFamily: fonts.sansMedium, fontSize: 10, color: colors.brown, marginTop: 26 },
+  root: { flex: 1, backgroundColor: colors.black },
+  bg: { ...StyleSheet.absoluteFillObject, opacity: 0.35 },
+  veil: { ...StyleSheet.absoluteFillObject, backgroundColor: "rgba(11,11,11,0.55)" },
+  wrap: { flexGrow: 1, paddingHorizontal: 28, justifyContent: "center", alignItems: "center", maxWidth: 560, width: "100%", alignSelf: "center" },
+  kicker: { fontFamily: fonts.sansMedium, fontSize: 10, letterSpacing: 3, color: colors.onDark },
+  rule: { width: 1, height: 34, backgroundColor: colors.gold, marginTop: 14 },
+  small: { fontFamily: fonts.sans, fontSize: 12, letterSpacing: 5, color: colors.onDark, textAlign: "center" },
+  big: { fontFamily: fonts.serif, fontSize: 28, letterSpacing: 4, color: colors.gold, textAlign: "center", marginTop: 6 },
+  quote: { fontFamily: fonts.serifLight, fontSize: 15, color: colors.onDark, textAlign: "center", marginTop: 18, lineHeight: 22 },
+  pillars: { flexDirection: "row", flexWrap: "wrap", justifyContent: "center", marginVertical: 30 },
+  pillar: { fontFamily: fonts.sansMedium, fontSize: 10, letterSpacing: 2, color: colors.gold },
+  cta: { width: "100%", maxWidth: 340 },
+  footer: { textAlign: "center", fontFamily: fonts.sansMedium, fontSize: 9, color: colors.onDarkMuted, marginTop: 24 },
 });
