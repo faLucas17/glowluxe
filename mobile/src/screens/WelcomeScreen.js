@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { Image } from "expo-image";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { fetchCategories, fetchProducts } from "../api";
@@ -20,8 +19,6 @@ export default function WelcomeScreen({ navigation }) {
   }, []);
   return (
     <View style={styles.root}>
-      <Image source={require("../../assets/brand/hero.jpg")} style={styles.bg} contentFit="cover" />
-      <View style={styles.veil} />
       <ScrollView contentContainerStyle={[styles.wrap, { paddingTop: insets.top + 36, paddingBottom: insets.bottom + 28 }]}>
         <Text style={styles.kicker}>MODE  /  ACCESSOIRES  /  LIFESTYLE</Text>
         <View style={styles.rule} />
@@ -45,8 +42,6 @@ export default function WelcomeScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: colors.black },
-  bg: { ...StyleSheet.absoluteFillObject, opacity: 0.35 },
-  veil: { ...StyleSheet.absoluteFillObject, backgroundColor: "rgba(11,11,11,0.55)" },
   wrap: { flexGrow: 1, paddingHorizontal: 28, justifyContent: "center", alignItems: "center", maxWidth: 560, width: "100%", alignSelf: "center" },
   kicker: { fontFamily: fonts.sansMedium, fontSize: 10, letterSpacing: 3, color: colors.onDark },
   rule: { width: 1, height: 34, backgroundColor: colors.gold, marginTop: 14 },
