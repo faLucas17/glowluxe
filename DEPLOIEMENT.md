@@ -30,14 +30,16 @@ carte bancaire est masquée.
 
 ## 2. API sur Render
 
-1. Render › **New › Blueprint** › dépôt `faLucas17/glowluxe` (le fichier `render.yaml` crée l'API et la base).
-2. Remplis les variables demandées. Exemple sans nom de domaine :
-   `SITE_URL=https://glowluxe-api.onrender.com`, `APP_URL=https://glowluxe.pages.dev`,
-   `CORS_ALLOWED_ORIGINS=https://glowluxe.pages.dev`.
-3. Teste : `https://glowluxe-api.onrender.com/api/products/` doit afficher tes articles.
+1. Base de données gratuite **Neon** (neon.tech) : crée un projet `glowluxe` (région Frankfurt),
+   puis copie l'adresse de connexion **sans « pooled connection »** (elle finit par `?sslmode=require`).
+2. Render › **New › Blueprint** › dépôt `faLucas17/glowluxe` (le fichier `render.yaml` crée l'API, offre gratuite).
+3. Remplis les variables demandées. Exemple sans nom de domaine :
+   `DATABASE_URL=<adresse Neon>`, `SITE_URL=https://glowluxe-api.onrender.com`,
+   `APP_URL=https://glowluxe.pages.dev`, `CORS_ALLOWED_ORIGINS=https://glowluxe.pages.dev`.
+4. Teste : `https://glowluxe-api.onrender.com/api/products/` doit afficher tes articles.
 
-Coût : API `starter` 7 $/mois (le plan gratuit s'endort et met ~50 s à se réveiller : c'est ce qui
-donne l'impression de lenteur), base `basic-256mb` ~6 $/mois (la base gratuite est supprimée après 30 jours).
+Coût : 0 F. L'offre gratuite de Render s'endort après 15 min sans visite et met environ 50 s
+à se réveiller. Neon gratuit ne s'efface pas. Les photos restent sur Cloudinary (gratuit).
 
 ## 3. Version web sur Cloudflare Pages
 

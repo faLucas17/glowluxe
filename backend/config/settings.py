@@ -121,6 +121,10 @@ DATABASES = {
     )
 }
 
+if not DEBUG and DATABASES["default"]["ENGINE"].endswith("sqlite3"):
+    # Sur Render, le disque est effacé à chaque déploiement : SQLite ferait tout perdre
+    raise ImproperlyConfigured("DATABASE_URL manquante : renseignez l'adresse de la base Neon sur Render.")
+
 AUTH_USER_MODEL = "accounts.User"
 AUTHENTICATION_BACKENDS = ["apps.accounts.backends.EmailBackend"]
 
