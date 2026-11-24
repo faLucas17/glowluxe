@@ -12,8 +12,8 @@ export async function openCheckout(url) {
     return;
   }
   await WebBrowser.openBrowserAsync(url, {
-    toolbarColor: "#0B0B0B",
-    controlsColor: "#D4AF63",
+    toolbarColor: "#4A2C21",
+    controlsColor: "#C8956A",
     presentationStyle: WebBrowser.WebBrowserPresentationStyle.PAGE_SHEET,
   });
 }

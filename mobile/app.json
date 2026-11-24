@@ -6,12 +6,11 @@
     "version": "2.0.0",
     "orientation": "default",
     "userInterfaceStyle": "light",
-    "primaryColor": "#0B0B0B",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#0B0B0B"
+      "backgroundColor": "#F7F2EC"
     },
     "ios": {
       "supportsTablet": true,
@@ -24,7 +23,7 @@
       "package": "com.glowluxe.sofa",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#0B0B0B"
+        "backgroundColor": "#F7F2EC"
       },
       "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"]
     },
@@ -34,8 +33,8 @@
       "favicon": "./assets/favicon.png",
       "name": "GlowLuxe By Sofa",
       "shortName": "GlowLuxe",
-      "themeColor": "#0B0B0B",
-      "backgroundColor": "#0B0B0B"
+      "themeColor": "#4A2C21",
+      "backgroundColor": "#F7F2EC"
     },
     "plugins": [
       "expo-font",

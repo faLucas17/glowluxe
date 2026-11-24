@@ -2,7 +2,7 @@ import { ActivityIndicator, Pressable, StyleSheet, Text } from "react-native";
 
 import { colors, fonts, radius, spacing } from "../theme";
 
-/** variant : "primary" (noir, texte or), "gold" (or, texte noir), "dark", "outline", "danger" */
+/** variant : "primary" (caramel), "dark" (marron), "outline", "danger" */
 export default function Button({ title, onPress, loading, disabled, variant = "primary", style, icon, small }) {
   const v = variants[variant] || variants.primary;
   return (
@@ -26,9 +26,8 @@ export default function Button({ title, onPress, loading, disabled, variant = "p
 }
 
 const variants = {
-  primary: { box: { backgroundColor: colors.black }, text: { color: colors.gold, letterSpacing: 1 } },
-  gold: { box: { backgroundColor: colors.gold }, text: { color: colors.black, letterSpacing: 2 } },
-  dark: { box: { backgroundColor: colors.black }, text: { color: colors.gold, letterSpacing: 2 } },
+  primary: { box: { backgroundColor: colors.caramel }, text: { color: colors.white } },
+  dark: { box: { backgroundColor: colors.brown }, text: { color: colors.white, letterSpacing: 2 } },
   outline: { box: { backgroundColor: "transparent", borderWidth: 1.5, borderColor: colors.brown }, text: { color: colors.brown } },
   danger: { box: { backgroundColor: colors.dangerBg }, text: { color: colors.danger } },
   light: { box: { backgroundColor: colors.cream }, text: { color: colors.brown } },

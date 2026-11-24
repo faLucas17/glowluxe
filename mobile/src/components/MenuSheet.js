@@ -30,7 +30,7 @@ export default function MenuSheet({ visible, onClose }) {
         <Pressable style={styles.card} onPress={() => {}}>
           <ScrollView>
             <View style={styles.head}>
-              <View style={styles.avatar}><Ionicons name="person" size={22} color={colors.gold} /></View>
+              <View style={styles.avatar}><Ionicons name="person" size={22} color={colors.white} /></View>
               <View style={{ flex: 1 }}>
                 <Text style={styles.name}>{user ? user.first_name || user.username : "Bienvenue"}</Text>
                 <Text style={styles.email}>{user ? user.email : "Connectez-vous pour commander"}</Text>
@@ -73,10 +73,10 @@ export default function MenuSheet({ visible, onClose }) {
 }
 
 const styles = StyleSheet.create({
-  backdrop: { flex: 1, backgroundColor: "rgba(0,0,0,0.55)", justifyContent: "center", padding: 24 },
+  backdrop: { flex: 1, backgroundColor: "rgba(43,29,22,0.45)", justifyContent: "center", padding: 24 },
   card: { backgroundColor: colors.white, borderRadius: radius.lg, padding: 18, maxWidth: 420, width: "100%", alignSelf: "center", maxHeight: "85%", ...shadow },
   head: { flexDirection: "row", alignItems: "center", gap: 12, paddingBottom: 14, borderBottomWidth: 1, borderBottomColor: colors.border, marginBottom: 6 },
-  avatar: { width: 44, height: 44, borderRadius: 22, backgroundColor: colors.black, alignItems: "center", justifyContent: "center" },
+  avatar: { width: 44, height: 44, borderRadius: 22, backgroundColor: colors.caramel, alignItems: "center", justifyContent: "center" },
   name: { fontFamily: fonts.sansBold, color: colors.text, fontSize: 15 },
   email: { fontFamily: fonts.sans, color: colors.textSecondary, fontSize: 12 },
   row: { flexDirection: "row", alignItems: "center", gap: 12, paddingVertical: 13, paddingHorizontal: 4, borderRadius: 8 },

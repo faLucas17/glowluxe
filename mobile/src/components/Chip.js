@@ -5,7 +5,7 @@ import { colors, fonts, radius } from "../theme";
 export default function Chip({ label, active, onPress, style }) {
   return (
     <Pressable onPress={onPress} style={[styles.chip, active && styles.active, style]} accessibilityRole="button">
-      <Text style={[styles.text, active && { color: colors.gold }]} numberOfLines={1}>{label}</Text>
+      <Text style={[styles.text, active && { color: colors.white }]} numberOfLines={1}>{label}</Text>
     </Pressable>
   );
 }

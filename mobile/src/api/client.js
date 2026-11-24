@@ -27,6 +27,7 @@ export const API_BASE_URL = resolveApiUrl();
 const api = axios.create({ baseURL: API_BASE_URL, timeout: 20000 });
 
 api.interceptors.request.use(async (config) => {
+  if (config._anonymous) return config;
   const token = await tokens.get("access_token");
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
@@ -55,9 +56,13 @@ api.interceptors.response.use(
         original.headers.Authorization = `Bearer ${data.access}`;
         return api(original);
       } catch (e) {
+        // Session expirée ou jeton d'une ancienne base : on déconnecte proprement
+        // puis on relance la requête SANS jeton (la boutique reste visible).
         await tokens.clear();
         onSessionExpired();
-        return Promise.reject(error);
+        if (original.headers) delete original.headers.Authorization;
+        original._anonymous = true;
+        return api(original);
       } finally {
         refreshing = null;
       }

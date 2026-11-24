@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     flexDirection: "row", alignItems: "center", gap: 10, borderWidth: 1, borderColor: colors.caramelLight,
     borderRadius: radius.md, padding: 13, marginBottom: 8, backgroundColor: colors.white,
   },
-  optionOn: { borderColor: colors.caramel, backgroundColor: "#FBF8F2" },
+  optionOn: { borderColor: colors.caramel, backgroundColor: "#FDF8F3" },
   optTitle: { fontFamily: fonts.sansMedium, fontSize: 13, color: colors.text },
   optSub: { fontFamily: fonts.sans, fontSize: 11, color: colors.textSecondary, marginTop: 2 },
   optPrice: { fontFamily: fonts.sansBold, fontSize: 13, color: colors.brown },

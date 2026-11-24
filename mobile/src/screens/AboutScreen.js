@@ -49,7 +49,7 @@ export default function AboutScreen() {
   return (
     <Screen>
       <View style={styles.hero}>
-        <Logo size={30} light variant="full" />
+        <Logo size={28} variant="full" />
         <Text style={styles.heroText}>LA MODE QUI RÉVÈLE VOTRE ÉCLAT</Text>
       </View>
       <View style={{ padding: 16, marginTop: -30, maxWidth: 820, width: "100%", alignSelf: "center" }}>
@@ -95,8 +95,8 @@ export default function AboutScreen() {
 }
 
 const styles = StyleSheet.create({
-  hero: { backgroundColor: colors.black, paddingTop: 34, paddingBottom: 60, alignItems: "center" },
-  heroText: { color: colors.gold, fontFamily: fonts.sans, letterSpacing: 3, fontSize: 11, marginTop: 14 },
+  hero: { backgroundColor: colors.brown, paddingTop: 34, paddingBottom: 60, alignItems: "center" },
+  heroText: { color: colors.cream, fontFamily: fonts.sans, letterSpacing: 3, fontSize: 11, marginTop: 14 },
   card: { backgroundColor: colors.white, borderRadius: radius.lg, padding: 18, marginBottom: 14, ...shadow },
   cardHead: { flexDirection: "row", alignItems: "center", gap: 8, marginBottom: 10 },
   cardTitle: { fontFamily: fonts.serifBold, fontSize: 15, color: colors.brown },

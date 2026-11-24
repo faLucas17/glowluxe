@@ -10,7 +10,7 @@ export default function Empty({ icon = "bag-handle-outline", title, text, action
       <View style={styles.circle}><Ionicons name={icon} size={34} color={colors.caramel} /></View>
       <Text style={styles.title}>{title}</Text>
       {text ? <Text style={styles.text}>{text}</Text> : null}
-      {action ? <Button title={action} onPress={onAction} style={{ marginTop: 18, alignSelf: "stretch" }} /> : null}
+      {action ? <Button title={action} onPress={onAction} style={{ marginTop: 18, alignSelf: "center", width: "100%", maxWidth: 360 }} /> : null}
     </View>
   );
 }

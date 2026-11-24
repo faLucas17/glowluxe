@@ -4,7 +4,7 @@ import { Image } from "expo-image";
 import { Ionicons } from "@expo/vector-icons";
 
 import { fetchCategories, fetchProducts, fetchPromotions } from "../api";
-import { peekCache } from "../api/client";
+import { API_BASE_URL, peekCache } from "../api/client";
 import AppHeader from "../components/AppHeader";
 import Chip from "../components/Chip";
 import Empty from "../components/Empty";
@@ -62,7 +62,12 @@ export default function HomeScreen({ navigation, route }) {
         setNext(data.next ?? null);
         setPage(1);
       } catch (e) {
-        setError("Impossible de charger la boutique. Vérifiez votre connexion.");
+        // En développement, on affiche l'adresse du serveur et la cause pour diagnostiquer vite
+        setError(
+          __DEV__
+            ? `Impossible de joindre le serveur ${API_BASE_URL}\n(${e?.response?.status || e?.message || "erreur réseau"}). Vérifiez que Django tourne : python manage.py runserver 0.0.0.0:8000`
+            : "Impossible de charger la boutique. Vérifiez votre connexion."
+        );
       } finally {
         setLoading(false);
         setRefreshing(false);
@@ -179,11 +184,11 @@ const styles = StyleSheet.create({
   },
   searchInput: { flex: 1, height: 46, fontFamily: fonts.sans, fontSize: 14, color: colors.text, outlineStyle: "none" },
   promo: {
-    flexDirection: "row", gap: 12, alignItems: "center", backgroundColor: colors.black, borderRadius: radius.md,
-    padding: 14, marginTop: 12, borderWidth: 1, borderColor: colors.caramel,
+    flexDirection: "row", gap: 12, alignItems: "center", backgroundColor: colors.brown, borderRadius: radius.md,
+    padding: 14, marginTop: 12,
   },
   promoImg: { width: 56, height: 56, borderRadius: 8 },
-  promoTitle: { color: colors.gold, fontFamily: fonts.sansBold, fontSize: 14 },
+  promoTitle: { color: colors.caramelLight, fontFamily: fonts.sansBold, fontSize: 14 },
   promoText: { color: colors.cream, fontFamily: fonts.sans, fontSize: 12, marginTop: 2 },
   promoCode: { color: colors.white, fontFamily: fonts.sansBold, fontSize: 12, marginTop: 4 },
 });

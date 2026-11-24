@@ -2,33 +2,24 @@ import { View } from "react-native";
 import { Image } from "expo-image";
 
 /**
- * Logo officiel GlowLuxe By SoFa (couronne + GL + signature), en image.
- *  - variant "wordmark" : GlowLuxe + By SoFa (en-tête)
- *  - variant "full"     : couronne, GL, GlowLuxe, By SoFa (accueil, connexion)
- *  - light=true         : version or lumineux pour fond noir ; sinon or foncé pour fond clair
- * "size" garde la même échelle qu'avant (hauteur du mot GlowLuxe).
+ * Logo officiel GlowLuxe By SoFa (image or, fond transparent).
+ *  - variant "wordmark" : GlowLuxe + By SoFa (en-tête, petites zones)
+ *  - variant "full"     : couronne + GL + GlowLuxe + By SoFa (accueil, connexion, à propos)
+ * "size" garde l'échelle de l'ancien logo texte (hauteur du mot GlowLuxe).
  */
 const SOURCES = {
-  wordmark: {
-    dark: require("../../assets/brand/logo-wordmark-dark.png"),
-    light: require("../../assets/brand/logo-wordmark-light.png"),
-    ratio: 1049 / 352,
-  },
-  full: {
-    dark: require("../../assets/brand/logo-full-dark.png"),
-    light: require("../../assets/brand/logo-full-light.png"),
-    ratio: 1073 / 793,
-  },
+  wordmark: { src: require("../../assets/brand/logo-wordmark.png"), ratio: 620 / 208, factor: 2.1 },
+  full: { src: require("../../assets/brand/logo-full.png"), ratio: 760 / 559, factor: 4.2 },
 };
 
-export default function Logo({ size = 22, light = false, center = true, variant = "wordmark" }) {
-  const src = SOURCES[variant] || SOURCES.wordmark;
-  const height = variant === "full" ? size * 4.2 : size * 2.1;
+export default function Logo({ size = 22, center = true, variant = "wordmark" }) {
+  const logo = SOURCES[variant] || SOURCES.wordmark;
+  const height = size * logo.factor;
   return (
     <View style={{ alignItems: center ? "center" : "flex-start" }}>
       <Image
-        source={light ? src.dark : src.light}
-        style={{ height, width: height * src.ratio }}
+        source={logo.src}
+        style={{ height, width: height * logo.ratio }}
         contentFit="contain"
         accessibilityLabel="GlowLuxe By SoFa"
         cachePolicy="memory-disk"
