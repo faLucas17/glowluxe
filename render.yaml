@@ -6,7 +6,7 @@ services:
     rootDir: backend
     region: frankfurt
     plan: starter            # 7 $/mois, ne s'endort pas (le plan free met ~50 s à se réveiller)
-    buildCommand: ./build.sh
+    buildCommand: bash build.sh
     startCommand: gunicorn config.wsgi:application --workers 2 --threads 4 --timeout 60 --access-logfile -
     healthCheckPath: /healthz/
     envVars:
