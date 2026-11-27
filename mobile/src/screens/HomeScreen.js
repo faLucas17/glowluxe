@@ -9,6 +9,7 @@ import AppHeader from "../components/AppHeader";
 import Chip from "../components/Chip";
 import Empty from "../components/Empty";
 import HeroBanner from "../components/HeroBanner";
+import SoftBackground from "../components/fx/SoftBackground";
 import ProductGrid from "../components/ProductGrid";
 import SectionTitle from "../components/SectionTitle";
 import GridSkeleton from "../components/Skeleton";
@@ -156,10 +157,12 @@ export default function HomeScreen({ navigation, route }) {
   );
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.background }}>
+    <View style={{ flex: 1, backgroundColor: colors.cream }}>
+      <SoftBackground />
       <AppHeader onSearch={() => { setSearchOpen((o) => !o); setTimeout(() => inputRef.current?.focus(), 150); }} />
       <ProductGrid
         products={loading ? [] : products}
+        list="catalogue"
         onPressProduct={openProduct}
         header={<View style={{ marginHorizontal: -padding, paddingHorizontal: padding }}>{header}</View>}
         onEndReached={loadMore}

@@ -9,6 +9,8 @@ import Button from "../components/Button";
 import Chip from "../components/Chip";
 import Empty from "../components/Empty";
 import ProductCard from "../components/ProductCard";
+import Glass from "../components/fx/Glass";
+import SoftBackground from "../components/fx/SoftBackground";
 import { Container } from "../components/Screen";
 import { useCart } from "../context/CartContext";
 import { useFavorites } from "../context/FavoritesContext";
@@ -92,7 +94,7 @@ export default function ProductDetailScreen({ route, navigation }) {
   );
 
   const info = (
-    <View style={{ padding: 16, flex: 1 }}>
+    <Glass radius={radius.md} intensity={30} tint={0.5} style={{ padding: 16, flex: 1, margin: wide ? 0 : 12, marginTop: wide ? 0 : 4, alignSelf: wide ? "flex-start" : "auto" }}>
       <Text style={styles.cat}>{(p.category_name || product?.category?.name || "").toUpperCase()}</Text>
       <View style={{ flexDirection: "row", alignItems: "flex-start" }}>
         <Text style={styles.name}>{p.name}</Text>
@@ -149,11 +151,13 @@ export default function ProductDetailScreen({ route, navigation }) {
         style={{ marginTop: 20 }}
       />
       {product?.made_to_order ? <Text style={styles.hint}>Article fabriqué pour vous : un acompte est demandé à la commande.</Text> : null}
-    </View>
+    </Glass>
   );
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: colors.background }} contentContainerStyle={{ paddingBottom: 40 }}>
+    <View style={{ flex: 1, backgroundColor: colors.cream }}>
+    <SoftBackground />
+    <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 40 }}>
       <Container>
         {wide ? <View style={{ flexDirection: "row", gap: 24, padding: 12 }}>{gallery}{info}</View> : <>{gallery}{info}</>}
         {related.length > 0 && (
@@ -161,13 +165,14 @@ export default function ProductDetailScreen({ route, navigation }) {
             <Text style={[styles.label, { fontSize: 16 }]}>Vous aimerez aussi</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 12 }}>
               {related.map((r) => (
-                <ProductCard key={r.id} product={r} width={150} onPress={() => navigation.push("ProductDetail", { slug: r.slug, preview: r })} />
+                <ProductCard key={r.id} product={r} width={150} list="similaires" onPress={() => navigation.push("ProductDetail", { slug: r.slug, preview: r })} />
               ))}
             </ScrollView>
           </View>
         )}
       </Container>
     </ScrollView>
+    </View>
   );
 }
 

@@ -5,11 +5,11 @@ import { useGrid } from "../utils/layout";
 import ProductCard from "./ProductCard";
 
 /** Grille responsive : 2 colonnes téléphone, 3-4 tablette, 5 ordinateur. */
-export default function ProductGrid({ products, onPressProduct, header, footer, empty, onEndReached, refreshControl }) {
+export default function ProductGrid({ products, onPressProduct, list, header, footer, empty, onEndReached, refreshControl }) {
   const { columns, itemWidth, gap, padding, contentWidth } = useGrid();
   const renderItem = useCallback(
-    ({ item }) => <ProductCard product={item} width={itemWidth} onPress={() => onPressProduct(item)} />,
-    [itemWidth, onPressProduct]
+    ({ item }) => <ProductCard product={item} width={itemWidth} list={list} onPress={() => onPressProduct(item)} />,
+    [itemWidth, onPressProduct, list]
   );
   return (
     <FlatList

@@ -5,6 +5,8 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { fetchCategories, fetchProducts } from "../api";
 import Button from "../components/Button";
 import Logo from "../components/Logo";
+import SoftBackground from "../components/fx/SoftBackground";
+import Animated, { FadeIn, ReduceMotion } from "react-native-reanimated";
 import { colors, fonts } from "../theme";
 
 const TAGS = ["PRÊT-À-PORTER", "ACCESSOIRES", "CROCHET", "QUALITÉ", "STYLE", "FÉMININ", "TENDANCE", "PREMIUM", "INTEMPOREL"];
@@ -17,13 +19,15 @@ export default function WelcomeScreen({ navigation }) {
     fetchCategories().catch(() => {});
   }, []);
   return (
-    <ScrollView style={{ backgroundColor: colors.cream }} contentContainerStyle={[styles.wrap, { paddingTop: insets.top + 50, paddingBottom: insets.bottom + 30 }]}>
+    <View style={{ flex: 1, backgroundColor: colors.cream }}>
+    <SoftBackground />
+    <ScrollView style={{ flex: 1 }} contentContainerStyle={[styles.wrap, { paddingTop: insets.top + 50, paddingBottom: insets.bottom + 30 }]}>
       <View style={{ alignItems: "center" }}>
         {["ELEGANCE", "STYLE", "CONFIANCE"].map((w) => <Text key={w} style={styles.big}>{w}</Text>)}
       </View>
-      <View style={{ alignItems: "center", marginVertical: 34 }}>
+      <Animated.View entering={FadeIn.duration(700).reduceMotion(ReduceMotion.System)} style={{ alignItems: "center", marginVertical: 34 }}>
         <Logo size={40} variant="full" />
-      </View>
+      </Animated.View>
       <Text style={styles.tagline}>LA MODE QUI RÉVÈLE{"\n"}VOTRE ÉCLAT</Text>
       <View style={styles.tags}>
         {TAGS.map((t) => <View key={t} style={styles.tag}><Text style={styles.tagText}>{t}</Text></View>)}
@@ -31,6 +35,7 @@ export default function WelcomeScreen({ navigation }) {
       <Button title="VOIR LA BOUTIQUE" variant="dark" onPress={() => navigation.replace("MainTabs")} style={{ width: "100%", maxWidth: 340, alignSelf: "center" }} />
       <Text style={styles.footer}>G L O W L U X E   B Y   S O F A</Text>
     </ScrollView>
+    </View>
   );
 }
 

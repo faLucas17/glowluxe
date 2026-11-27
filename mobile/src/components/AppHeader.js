@@ -9,6 +9,7 @@ import { useFavorites } from "../context/FavoritesContext";
 import { colors, fonts } from "../theme";
 import Logo from "./Logo";
 import MenuSheet from "./MenuSheet";
+import Glass from "./fx/Glass";
 
 function IconBadge({ name, count, onPress, label }) {
   return (
@@ -27,7 +28,7 @@ export default function AppHeader({ onSearch }) {
   const favs = useFavorites();
   const [menu, setMenu] = useState(false);
   return (
-    <View style={[styles.wrap, { paddingTop: insets.top + 6 }]}>
+    <Glass radius={0} border={false} intensity={45} tint={0.6} style={[styles.wrap, { paddingTop: insets.top + 6 }]}>
       <View style={styles.row}>
         <Pressable onPress={() => setMenu(true)} hitSlop={8} style={styles.icon} accessibilityLabel="Menu">
           <Ionicons name="menu" size={26} color={colors.brown} />
@@ -44,12 +45,12 @@ export default function AppHeader({ onSearch }) {
         </View>
       </View>
       <MenuSheet visible={menu} onClose={() => setMenu(false)} />
-    </View>
+    </Glass>
   );
 }
 
 const styles = StyleSheet.create({
-  wrap: { backgroundColor: colors.white, borderBottomWidth: 1, borderBottomColor: colors.border },
+  wrap: { borderBottomWidth: 1, borderBottomColor: "rgba(232,217,201,0.8)", overflow: "visible", zIndex: 10 },
   row: { height: 52, flexDirection: "row", alignItems: "center", paddingHorizontal: 12, maxWidth: 1280, width: "100%", alignSelf: "center" },
   logo: { position: "absolute", left: 0, right: 0, alignItems: "center", zIndex: -1 },
   right: { marginLeft: "auto", flexDirection: "row", alignItems: "center", gap: 4 },

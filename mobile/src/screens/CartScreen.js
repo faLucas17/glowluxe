@@ -3,10 +3,13 @@ import { FlatList, Pressable, RefreshControl, StyleSheet, Text, View } from "rea
 import { useFocusEffect } from "@react-navigation/native";
 import { Image } from "expo-image";
 import { Ionicons } from "@expo/vector-icons";
+import Animated from "react-native-reanimated";
 
 import { errorMessage } from "../api/client";
 import Button from "../components/Button";
 import Empty from "../components/Empty";
+import Glass from "../components/fx/Glass";
+import { useEnterOnce } from "../components/fx/enterOnce";
 import { useAuth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
 import { colors, fonts, money } from "../theme";
@@ -45,6 +48,7 @@ export default function CartScreen({ navigation }) {
         renderItem={({ item }) => {
           const p = item.product_detail || {};
           return (
+            <CartRow key={item.id} id={item.id}>
             <View style={[styles.row, busy === item.id && { opacity: 0.5 }]}>
               <Pressable onPress={() => navigation.navigate("Boutique", { screen: "ProductDetail", params: { slug: p.slug, preview: p } })}>
                 <Image source={p.primary_image ? { uri: p.primary_image } : null} style={styles.img} contentFit="cover" cachePolicy="memory-disk" />
@@ -61,10 +65,11 @@ export default function CartScreen({ navigation }) {
               </View>
               <Pressable onPress={() => remove(item)} hitSlop={8}><Text style={styles.remove}>Retirer</Text></Pressable>
             </View>
+            </CartRow>
           );
         }}
       />
-      <View style={styles.footer}>
+      <Glass radius={0} border={false} intensity={40} tint={0.6} style={styles.footer}>
         <View style={styles.totalRow}>
           <Text style={styles.totalLabel}>Total</Text>
           <Text style={styles.total}>{money(cart.total, true)}</Text>
@@ -74,9 +79,15 @@ export default function CartScreen({ navigation }) {
           title={user ? "Passer la commande" : "Se connecter pour commander"}
           onPress={() => (user ? navigation.navigate("Checkout") : navigation.navigate("Login", { next: "Panier" }))}
         />
-      </View>
+      </Glass>
     </View>
   );
+}
+
+/** Ligne du panier : apparaît une seule fois, en fondu. */
+function CartRow({ id, children }) {
+  const entering = useEnterOnce("panier", id);
+  return <Animated.View entering={entering}>{children}</Animated.View>;
 }
 
 const styles = StyleSheet.create({
@@ -89,7 +100,7 @@ const styles = StyleSheet.create({
   step: { width: 26, height: 26, borderRadius: 13, borderWidth: 1, borderColor: colors.caramelLight, alignItems: "center", justifyContent: "center" },
   qty: { fontFamily: fonts.sansSemiBold, fontSize: 13, color: colors.text, minWidth: 16, textAlign: "center" },
   remove: { fontFamily: fonts.sansMedium, fontSize: 11, color: colors.danger },
-  footer: { borderTopWidth: 1, borderTopColor: colors.border, padding: 16, backgroundColor: colors.white, maxWidth: 800, width: "100%", alignSelf: "center" },
+  footer: { borderTopWidth: 1, borderTopColor: "rgba(232,217,201,0.9)", padding: 16, maxWidth: 800, width: "100%", alignSelf: "center" },
   totalRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
   totalLabel: { fontFamily: fonts.sans, color: colors.textSecondary },
   total: { fontFamily: fonts.sansBold, fontSize: 17, color: colors.caramel },
