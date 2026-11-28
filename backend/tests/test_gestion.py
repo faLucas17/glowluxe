@@ -120,3 +120,8 @@ class GestionTest(Base):
         r = self.g.post(f"/api/gestion/promotions/{p.pk}/send/")
         self.assertEqual(r.status_code, 200, r.data)
         self.assertEqual(r.data["promotion"]["emailed_count"], 1)
+
+    def test_email_check(self):
+        r = self.g.get("/api/gestion/emails/")
+        self.assertFalse(r.data["configured"])  # tests : pas de Brevo
+        self.assertEqual(self.g.post("/api/gestion/emails/").status_code, 400)

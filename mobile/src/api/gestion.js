@@ -51,6 +51,8 @@ export const sendPromotion = (id) => post(`/promotions/${id}/send/`);
 
 export const settings = () => get("/reglages/");
 export const saveSettings = (body) => patch("/reglages/", body);
+export const emailStatus = () => get("/emails/");
+export const sendTestEmail = () => post("/emails/");
 
 /** Photos choisies avec expo-image-picker -> envoi multipart (téléphone et navigateur). */
 async function toFormData(assets, field, extra = {}) {

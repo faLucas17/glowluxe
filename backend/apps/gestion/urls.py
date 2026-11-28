@@ -17,4 +17,5 @@ router.register("promotions", views.PromotionViewSet, basename="g-promotions")
 urlpatterns = [
     path("tableau-de-bord/", views.dashboard, name="g-dashboard"),
     path("reglages/", views.shop_settings, name="g-settings"),
+    path("emails/", views.email_check, name="g-emails"),
 ] + router.urls

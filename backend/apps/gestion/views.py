@@ -1,6 +1,7 @@
 """API de l'espace de gestion : réservée aux comptes gérante (is_staff)."""
 from datetime import timedelta
 
+from django.conf import settings as dj_settings
 from django.contrib.auth import get_user_model
 from django.db.models import Count, DecimalField, Q, Sum, Value
 from django.db.models.deletion import ProtectedError
@@ -346,3 +347,28 @@ def shop_settings(request):
         ser.save()
         return Response(ser.data)
     return Response(s.SettingsSerializer(obj).data)
+
+
+@api_view(["GET", "POST"])
+@permission_classes([IsAdminUser])
+def email_check(request):
+    """État de l'envoi d'emails + email de test envoyé tout de suite à la gérante."""
+    configured = "anymail" in dj_settings.EMAIL_BACKEND
+    info = {"configured": configured, "sender": dj_settings.DEFAULT_FROM_EMAIL, "shop_email": dj_settings.SHOP_NOTIFICATION_EMAIL}
+    if request.method == "GET":
+        return Response(info)
+    if not configured:
+        return fail("Brevo n'est pas encore relié : ajoutez BREVO_API_KEY sur Render.")
+    from apps.core.emails import build_email
+
+    try:
+        msg = build_email("test_email", "Test des emails GlowLuxe", request.user.email, {"user": request.user})
+        msg.send(fail_silently=False)
+    except Exception as e:  # message clair pour la gérante (expéditeur non validé, clé invalide...)
+        text = str(e)
+        if "sender" in text.lower() or "expéditeur" in text.lower():
+            text = f"Brevo refuse l'expéditeur {dj_settings.DEFAULT_FROM_EMAIL} : validez cette adresse dans Brevo (Senders)."
+        elif "key" in text.lower() or "unauthorized" in text.lower() or "401" in text:
+            text = "Clé Brevo refusée : vérifiez BREVO_API_KEY sur Render."
+        return fail(f"Échec de l'envoi. {text}"[:400])
+    return Response({**info, "message": f"Email de test envoyé à {request.user.email}. Pensez à regarder dans les spams."})

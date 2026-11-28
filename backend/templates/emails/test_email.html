@@ -1,0 +1,4 @@
+{% extends 'emails/_base.html' %}{% block body %}
+<h1 style="font-size:20px;margin:0 0 12px">Les emails fonctionnent ✨</h1>
+<p>Bonjour {{ user.first_name|default:user.username }}, cet email de test confirme que Brevo est bien relié à GlowLuxe. Vos clientes recevront leurs confirmations de commande, le suivi de livraison et vos promotions.</p>
+{% include 'emails/_button.html' with url=app_url label="Ouvrir la boutique" %}{% endblock %}
