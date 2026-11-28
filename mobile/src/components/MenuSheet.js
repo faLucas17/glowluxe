@@ -38,16 +38,16 @@ export default function MenuSheet({ visible, onClose }) {
             </View>
             {user ? (
               <>
-                {user.is_staff ? <Row icon="briefcase-outline" label="Espace de gestion" onPress={() => go("Gestion", { screen: "GestionHome" })} /> : null}
+                {user.is_staff ? <Row icon="briefcase-outline" label="Espace de gestion" onPress={() => go("Gestion", { screen: "GestionHome", initial: false })} /> : null}
                 <Row icon="receipt-outline" label="Mes commandes" onPress={() => go("Commandes")} />
                 <Row icon="heart-outline" label="Mes favoris" onPress={() => go("Favoris")} />
-                <Row icon="location-outline" label="Mes adresses" onPress={() => go("Profil", { screen: "Addresses" })} />
+                <Row icon="location-outline" label="Mes adresses" onPress={() => go("Profil", { screen: "Addresses", initial: false })} />
                 <Row
                   icon="bicycle-outline"
                   label={user.is_courier ? "Espace livreur" : "Devenir livreur"}
-                  onPress={() => go("Profil", { screen: user.is_courier ? "CourierDashboard" : "BecomeCourier" })}
+                  onPress={() => go("Profil", { screen: user.is_courier ? "CourierDashboard" : "BecomeCourier", initial: false })}
                 />
-                <Row icon="settings-outline" label="Paramètres" onPress={() => go("Profil", { screen: "Settings" })} />
+                <Row icon="settings-outline" label="Paramètres" onPress={() => go("Profil", { screen: "Settings", initial: false })} />
               </>
             ) : (
               <>
@@ -56,7 +56,7 @@ export default function MenuSheet({ visible, onClose }) {
                 <Row icon="heart-outline" label="Mes favoris" onPress={() => go("Favoris")} />
               </>
             )}
-            <Row icon="information-circle-outline" label="À propos" onPress={() => (user?.is_staff ? go("Gestion", { screen: "GestionAbout" }) : go("À propos"))} />
+            <Row icon="information-circle-outline" label="À propos" onPress={() => (user?.is_staff ? go("Gestion", { screen: "GestionAbout", initial: false }) : go("À propos"))} />
             {user ? (
               <Pressable
                 style={styles.logout}

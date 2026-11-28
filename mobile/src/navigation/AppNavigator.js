@@ -3,7 +3,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Platform } from "react-native";
+import { Platform, Pressable } from "react-native";
 
 import AppHeader from "../components/AppHeader";
 import { useAuth } from "../context/AuthContext";
@@ -56,7 +56,7 @@ const theme = {
   colors: { ...DefaultTheme.colors, background: colors.background, card: colors.white, text: colors.text, border: colors.border, primary: colors.caramel },
 };
 
-const stackOptions = {
+const baseStackOptions = {
   headerTintColor: colors.brown,
   headerTitleStyle: { fontFamily: fonts.sansSemiBold, color: colors.text, fontSize: 16 },
   headerStyle: { backgroundColor: colors.white },
@@ -65,6 +65,30 @@ const stackOptions = {
   contentStyle: { backgroundColor: colors.background },
   animation: Platform.OS === "android" ? "fade_from_bottom" : "default",
 };
+/**
+ * Bouton retour toujours présent : si l'écran a été ouvert directement (menu, lien d'email,
+ * page web rechargée), il n'y a rien « derrière » lui ; la flèche ramène alors à l'accueil de l'onglet.
+ */
+function stackOptions({ navigation, route }) {
+  const state = navigation.getState();
+  const home = state?.routeNames?.[0];
+  // Un écran est déjà dessous dans cet onglet : la flèche normale suffit
+  if (!state || state.index > 0 || !home || route.name === home) return baseStackOptions;
+  return {
+    ...baseStackOptions,
+    headerLeft: () => (
+      <Pressable
+        onPress={() => navigation.reset({ index: 0, routes: [{ name: home }] })}
+        hitSlop={12}
+        style={{ paddingRight: 12, paddingVertical: 4 }}
+        accessibilityRole="button"
+        accessibilityLabel="Retour"
+      >
+        <Ionicons name={Platform.OS === "ios" ? "chevron-back" : "arrow-back"} size={24} color={colors.brown} />
+      </Pressable>
+    ),
+  };
+}
 const withAppHeader = { header: () => <AppHeader /> };
 
 function BoutiqueStack() {
@@ -229,7 +253,7 @@ const linking = {
 export default function AppNavigator() {
   return (
     <NavigationContainer theme={theme} linking={linking} documentTitle={{ formatter: () => "GlowLuxe By Sofa" }}>
-      <Root.Navigator initialRouteName={Platform.OS === "web" ? "MainTabs" : "Welcome"} screenOptions={{ ...stackOptions, headerShown: false }}>
+      <Root.Navigator initialRouteName={Platform.OS === "web" ? "MainTabs" : "Welcome"} screenOptions={{ ...baseStackOptions, headerShown: false }}>
         <Root.Screen name="Welcome" component={WelcomeScreen} options={{ animation: "fade" }} />
         <Root.Screen name="MainTabs" component={MainTabs} options={{ animation: "fade" }} />
         <Root.Group screenOptions={{ presentation: "modal", headerShown: true }}>
