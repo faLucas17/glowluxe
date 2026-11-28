@@ -38,6 +38,7 @@ export default function MenuSheet({ visible, onClose }) {
             </View>
             {user ? (
               <>
+                {user.is_staff ? <Row icon="briefcase-outline" label="Espace de gestion" onPress={() => go("Gestion", { screen: "GestionHome" })} /> : null}
                 <Row icon="receipt-outline" label="Mes commandes" onPress={() => go("Commandes")} />
                 <Row icon="heart-outline" label="Mes favoris" onPress={() => go("Favoris")} />
                 <Row icon="location-outline" label="Mes adresses" onPress={() => go("Profil", { screen: "Addresses" })} />
@@ -55,7 +56,7 @@ export default function MenuSheet({ visible, onClose }) {
                 <Row icon="heart-outline" label="Mes favoris" onPress={() => go("Favoris")} />
               </>
             )}
-            <Row icon="information-circle-outline" label="À propos" onPress={() => go("À propos")} />
+            <Row icon="information-circle-outline" label="À propos" onPress={() => (user?.is_staff ? go("Gestion", { screen: "GestionAbout" }) : go("À propos"))} />
             {user ? (
               <Pressable
                 style={styles.logout}

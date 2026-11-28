@@ -25,7 +25,10 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#F7F2EC"
       },
-      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"]
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -43,6 +46,13 @@
         "expo-location",
         {
           "locationWhenInUsePermission": "Votre position permet au livreur de vous trouver et, pour les livreurs, de partager le trajet avec le client."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "GlowLuxe a besoin d'accéder à vos photos pour ajouter les images des articles.",
+          "cameraPermission": "GlowLuxe utilise l'appareil photo pour photographier les articles."
         }
       ]
     ]

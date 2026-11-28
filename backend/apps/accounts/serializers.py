@@ -26,9 +26,9 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = [
             "id", "email", "username", "first_name", "last_name", "phone_number",
-            "email_verified", "newsletter", "is_courier", "courier_status",
+            "email_verified", "newsletter", "is_courier", "courier_status", "is_staff",
         ]
-        read_only_fields = ["id", "email", "email_verified", "is_courier", "courier_status"]
+        read_only_fields = ["id", "email", "email_verified", "is_courier", "courier_status", "is_staff"]
 
     def get_is_courier(self, obj):
         c = getattr(obj, "courier_profile", None)

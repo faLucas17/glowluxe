@@ -21,6 +21,7 @@ urlpatterns = [
     path("api/", include("apps.orders.urls")),
     path("api/", include("apps.shipping.urls")),
     path("api/payments/", include("apps.payments.urls")),
+    path("api/gestion/", include("apps.gestion.urls")),
     # Pages web (retour de paiement, carte de suivi, liens des emails)
     path("", include("apps.core.urls")),
 ]

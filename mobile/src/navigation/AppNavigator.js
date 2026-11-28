@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Platform } from "react-native";
 
 import AppHeader from "../components/AppHeader";
+import { useAuth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
 import { useFavorites } from "../context/FavoritesContext";
 import { colors, fonts } from "../theme";
@@ -29,6 +30,22 @@ import ProfileScreen from "../screens/ProfileScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
+import AdminCategoriesScreen from "../screens/gestion/AdminCategoriesScreen";
+import AdminCategoryFormScreen from "../screens/gestion/AdminCategoryFormScreen";
+import AdminClientScreen from "../screens/gestion/AdminClientScreen";
+import AdminClientsScreen from "../screens/gestion/AdminClientsScreen";
+import AdminCouriersScreen from "../screens/gestion/AdminCouriersScreen";
+import AdminOrderScreen from "../screens/gestion/AdminOrderScreen";
+import AdminOrdersScreen from "../screens/gestion/AdminOrdersScreen";
+import AdminPaymentsScreen from "../screens/gestion/AdminPaymentsScreen";
+import AdminProductFormScreen from "../screens/gestion/AdminProductFormScreen";
+import AdminProductsScreen from "../screens/gestion/AdminProductsScreen";
+import AdminPromotionFormScreen from "../screens/gestion/AdminPromotionFormScreen";
+import AdminPromotionsScreen from "../screens/gestion/AdminPromotionsScreen";
+import AdminReviewsScreen from "../screens/gestion/AdminReviewsScreen";
+import AdminSettingsScreen from "../screens/gestion/AdminSettingsScreen";
+import AdminZonesScreen from "../screens/gestion/AdminZonesScreen";
+import GestionHomeScreen from "../screens/gestion/GestionHomeScreen";
 
 const Root = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -109,16 +126,43 @@ function ProfilStack() {
   );
 }
 
+/** Espace de gestion (comptes gérante uniquement) : remplace l'ancienne administration Django. */
+function GestionStack() {
+  return (
+    <Stack.Navigator screenOptions={stackOptions}>
+      <Stack.Screen name="GestionHome" component={GestionHomeScreen} options={withAppHeader} />
+      <Stack.Screen name="AdminOrders" component={AdminOrdersScreen} options={{ title: "Commandes" }} />
+      <Stack.Screen name="AdminOrder" component={AdminOrderScreen} options={{ title: "Commande" }} />
+      <Stack.Screen name="AdminPayments" component={AdminPaymentsScreen} options={{ title: "Paiements" }} />
+      <Stack.Screen name="AdminProducts" component={AdminProductsScreen} options={{ title: "Articles" }} />
+      <Stack.Screen name="AdminProductForm" component={AdminProductFormScreen} options={{ title: "Article" }} />
+      <Stack.Screen name="AdminCategories" component={AdminCategoriesScreen} options={{ title: "Catégories" }} />
+      <Stack.Screen name="AdminCategoryForm" component={AdminCategoryFormScreen} options={{ title: "Catégorie" }} />
+      <Stack.Screen name="AdminPromotions" component={AdminPromotionsScreen} options={{ title: "Promotions" }} />
+      <Stack.Screen name="AdminPromotionForm" component={AdminPromotionFormScreen} options={{ title: "Promotion" }} />
+      <Stack.Screen name="AdminClients" component={AdminClientsScreen} options={{ title: "Clientes" }} />
+      <Stack.Screen name="AdminClient" component={AdminClientScreen} options={{ title: "Cliente" }} />
+      <Stack.Screen name="AdminCouriers" component={AdminCouriersScreen} options={{ title: "Livreurs" }} />
+      <Stack.Screen name="AdminZones" component={AdminZonesScreen} options={{ title: "Zones de livraison" }} />
+      <Stack.Screen name="AdminSettings" component={AdminSettingsScreen} options={{ title: "Réglages de la boutique" }} />
+      <Stack.Screen name="AdminReviews" component={AdminReviewsScreen} options={{ title: "Avis" }} />
+      <Stack.Screen name="GestionAbout" component={AboutScreen} options={withAppHeader} />
+    </Stack.Navigator>
+  );
+}
+
 const ICONS = {
   Boutique: "storefront",
   Favoris: "heart",
   Panier: "bag-handle",
   Commandes: "receipt",
   "À propos": "information-circle",
+  Gestion: "briefcase",
   Profil: "person",
 };
 
 function MainTabs() {
+  const { user } = useAuth();
   const { count } = useCart();
   const favs = useFavorites();
   return (
@@ -140,7 +184,8 @@ function MainTabs() {
       <Tab.Screen name="Favoris" component={FavorisStack} options={{ tabBarBadge: favs.count || undefined }} />
       <Tab.Screen name="Panier" component={PanierStack} options={{ tabBarBadge: count || undefined }} />
       <Tab.Screen name="Commandes" component={CommandesStack} />
-      <Tab.Screen name="À propos" component={AboutStack} />
+      {/* Compte gérante : l'onglet « Gestion » prend la place de « À propos » (toujours dans le menu) */}
+      {user?.is_staff ? <Tab.Screen name="Gestion" component={GestionStack} /> : <Tab.Screen name="À propos" component={AboutStack} />}
       <Tab.Screen name="Profil" component={ProfilStack} />
     </Tab.Navigator>
   );
@@ -162,6 +207,15 @@ const linking = {
           Panier: { path: "panier", screens: { PanierDetail: "", Checkout: "paiement" } },
           Commandes: { path: "commandes", screens: { Orders: "", OrderDetail: ":id", Tracking: ":id/suivi" } },
           "À propos": { path: "a-propos", screens: { AboutDetail: "" } },
+          Gestion: {
+            path: "gestion",
+            screens: {
+              GestionHome: "", AdminOrders: "commandes", AdminOrder: "commandes/:id", AdminPayments: "paiements",
+              AdminProducts: "articles", AdminProductForm: "article", AdminCategories: "categories", AdminCategoryForm: "categorie",
+              AdminPromotions: "promotions", AdminPromotionForm: "promotion", AdminClients: "clientes", AdminClient: "clientes/:id",
+              AdminCouriers: "livreurs", AdminZones: "zones", AdminSettings: "reglages", AdminReviews: "avis", GestionAbout: "a-propos",
+            },
+          },
           Profil: {
             path: "profil",
             screens: { ProfilDetail: "", Settings: "parametres", Addresses: "adresses", BecomeCourier: "devenir-livreur", CourierDashboard: "livreur" },

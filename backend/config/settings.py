@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     "apps.orders",
     "apps.shipping",
     "apps.payments",
+    "apps.gestion",
 ]
 
 USE_CLOUDINARY = bool(config("CLOUDINARY_URL", default=""))
