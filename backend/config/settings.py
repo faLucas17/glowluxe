@@ -205,6 +205,9 @@ SIMPLE_JWT = {
 
 # CORS : l'appli mobile n'en a pas besoin ; la version web (Cloudflare Pages) oui.
 CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS", default="", cast=Csv())
+# Le site web (APP_URL) est toujours autorisé, même si CORS_ALLOWED_ORIGINS est oublié
+if APP_URL.startswith("https://") and APP_URL not in CORS_ALLOWED_ORIGINS:
+    CORS_ALLOWED_ORIGINS.append(APP_URL)
 CORS_ALLOW_ALL_ORIGINS = DEBUG
 
 # ─────────────────────────────────────────────

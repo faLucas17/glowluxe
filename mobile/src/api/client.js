@@ -10,11 +10,21 @@ import { tokens } from "./storage";
  * - développement : trouvée AUTOMATIQUEMENT à partir de l'IP de ton PC utilisée par Expo
  *   (plus besoin de modifier ce fichier quand l'IP Wi-Fi change !)
  */
+// API en ligne (Render). Sert de secours si EXPO_PUBLIC_API_URL n'est pas fournie au build.
+const PRODUCTION_API = "https://glowluxe-api.onrender.com/api";
+
+function isLocalHost(host) {
+  return host === "localhost" || host === "127.0.0.1" || /^(10|192\.168|172\.(1[6-9]|2\d|3[01]))\./.test(host);
+}
+
 function resolveApiUrl() {
   const fromEnv = process.env.EXPO_PUBLIC_API_URL;
   if (fromEnv) return fromEnv.replace(/\/$/, "");
   if (Platform.OS === "web" && typeof window !== "undefined") {
-    return `${window.location.protocol}//${window.location.hostname}:8000/api`;
+    const host = window.location.hostname;
+    // Site en ligne (Cloudflare Pages...) : on parle à l'API Render
+    if (!isLocalHost(host)) return PRODUCTION_API;
+    return `${window.location.protocol}//${host}:8000/api`;
   }
   const hostUri = Constants.expoConfig?.hostUri || Constants.expoGoConfig?.debuggerHost || "";
   const host = hostUri.split(":")[0];
@@ -24,7 +34,8 @@ function resolveApiUrl() {
 
 export const API_BASE_URL = resolveApiUrl();
 
-const api = axios.create({ baseURL: API_BASE_URL, timeout: 20000 });
+// 70 s : sur l'offre gratuite de Render, le serveur endormi met jusqu'à 50 s à se réveiller
+const api = axios.create({ baseURL: API_BASE_URL, timeout: 70000 });
 
 api.interceptors.request.use(async (config) => {
   if (config._anonymous) return config;

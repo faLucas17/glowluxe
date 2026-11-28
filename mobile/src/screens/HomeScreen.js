@@ -25,6 +25,13 @@ export default function HomeScreen({ navigation, route }) {
   const [next, setNext] = useState(cached?.next || null);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(!cached);
+  const [slow, setSlow] = useState(false);
+  // Serveur gratuit endormi : on prévient la cliente au lieu de laisser un écran vide
+  useEffect(() => {
+    if (!loading) { setSlow(false); return; }
+    const t = setTimeout(() => setSlow(true), 6000);
+    return () => clearTimeout(t);
+  }, [loading]);
   const [loadingMore, setLoadingMore] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState(null);
@@ -152,6 +159,7 @@ export default function HomeScreen({ navigation, route }) {
         subtitle={searching ? `${products.length} article(s)` : "Découvrez les dernières pièces de la collection"}
         icon={searching ? "search" : "sparkles-outline"}
       />
+      {loading && slow ? <Text style={styles.wake}>La boutique se prépare, encore quelques secondes...</Text> : null}
       {loading ? <GridSkeleton /> : null}
     </View>
   );
@@ -181,6 +189,7 @@ export default function HomeScreen({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
+  wake: { textAlign: "center", fontFamily: fonts.sans, fontSize: 12, color: colors.textSecondary, marginVertical: 8 },
   search: {
     flexDirection: "row", alignItems: "center", backgroundColor: colors.cream, borderRadius: radius.md,
     paddingHorizontal: 14, marginTop: 12,
